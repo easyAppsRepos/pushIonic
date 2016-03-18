@@ -1,0 +1,474 @@
+
+  <div class="tabs-striped tabs-top  tabs-color-light">
+    <div class="tabs">
+      <a class="tab-item active" href="#" ng-class="{active: tabRes == 'res'}" href="#" ng-click="tabRes = 'res'">
+        Datos Restaurant <span class="push-number" ng-if="reservasActivas.length > 0">{{ reservasActivas.length }}</span>
+      </a>
+      <a class="tab-item" href="#" ng-class="{active: tabRes == 'horario'}" href="#" ng-click="tabRes = 'horario'">
+        Horario <span class="push-number" ng-if="reservasAntiguas.length > 0">{{ reservasAntiguas.length }}</span>
+      </a>
+      <a class="tab-item" href="#" ng-class="{active: tabRes == 'settings'}" href="#" ng-click="tabRes = 'settings'">
+        Settings <span class="push-number" ng-if="reservasEliminadas.length > 0">{{ reservasEliminadas.length }}</span>
+      </a>
+    </div>
+  </div>
+
+<ion-view view-title="Restaurant">
+  <ion-content>
+    <h1>Restaurant</h1>
+
+	<!-- Res -->
+	<div class="list" ng-if="tabRes == 'res'">
+	  <label class="item item-input">
+	    <span class="input-label">Nombre</span>
+	    <input type="text" ng-model="res.co_nombre">
+	  </label>
+	  <label class="item item-input">
+	    <span class="input-label">Telefono</span>
+	    <input type="tel" ng-model="res.co_telefono">
+	  </label>
+	  <label class="item item-input">
+	    <span class="input-label">E-mail</span>
+	    <input type="email" ng-model="res.co_email">
+	  </label>
+	  <label class="item item-input">
+	    <span class="input-label">Ciudad</span>
+	    <input type="text" ng-model="res.co_ciudad">
+	  </label>
+	  <label class="item item-input">
+	    <span class="input-label">Codigo postal</span>
+	    <input type="text" ng-model="res.co_codigo_postal">
+	  </label>
+	  <label class="item item-input">
+	    <span class="input-label">Dirección</span>
+	    <input type="text" ng-model="res.co_direccion">
+	  </label>
+	  <label class="item item-input">
+	    <span class="input-label">Provincia</span>
+	    <input type="text" ng-model="res.co_provincia">
+	  </label>
+	  <label class="item item-input">
+	    <span class="input-label">País</span>
+	    <input type="text" ng-model="res.co_pais">
+	  </label>
+	  <label class="item item-input">
+	    <span class="input-label">Facebook</span>
+	    <input type="text" ng-model="res.co_facebook">
+	  </label>
+	  <label class="item item-input">
+	    <span class="input-label">Google +</span>
+	    <input type="text" ng-model="res.co_google_plus">
+	  </label>
+	  <label class="item item-input">
+	    <span class="input-label">Twitter</span>
+	    <input type="text" ng-model="res.co_twitter">
+	  </label>
+	  <label class="item item-input">
+	    <span class="input-label">Instagram</span>
+	    <input type="text" ng-model="res.co_instagram">
+	  </label>
+	  <button class="button button-full button-dark CoColor" ng-click="saveRes()">
+		  Guardar
+		</button>
+	</div>
+
+	<!-- Horario -->
+
+	<div ng-if="tabRes == 'horario'" class="horario">
+	<h4 style="margin-top: 15px;">Horario</h4>
+
+		<!-- LUNES -->
+		<table>
+			<tr>
+				<td>Lu</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td rowspan="2">
+			     <label class="toggle toggle-assertive openDay">
+			       <input type="checkbox" ng-model="res.abre_lunes" ng-true-value="1" ng-false-value="0" ng-checked="res.res_abre_lunes == 1">
+			       <div class="track">
+			         <div class="handle"></div>
+			       </div>
+			     </label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<select name="" id="" ng-model="res.res_lunes_abre_am" ng-change="changeSettingValue('res_lunes_abre_am', res.res_lunes_abre_am)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_lunes_abre_am == hora">{{ hora }}</option>
+					</select>
+				</td>
+				<td>
+					<select name="" id="" ng-model="res.res_lunes_cierra_am" ng-change="changeSettingValue('res_lunes_cierra_am', res.res_lunes_cierra_am)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_lunes_cierra_am == hora">{{ hora }}</option>
+					</select>
+				</td>
+				<td>
+					<select name="" id="" ng-model="res.res_lunes_abre_pm" ng-change="changeSettingValue('res_lunes_abre_pm', res.res_lunes_abre_pm)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_lunes_abre_pm == hora">{{ hora }}</option>
+					</select>
+				</td>
+				<td>
+					<select name="" id="" ng-model="res.res_lunes_cierra_pm" ng-change="changeSettingValue('res_lunes_cierra_pm', res.res_lunes_cierra_pm)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_lunes_cierra_pm == hora">{{ hora }}</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+
+
+		<!-- Martes -->
+		<table>
+			<tr>
+				<td>Ma</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td rowspan="2">
+			     <label class="toggle toggle-assertive openDay">
+			       <input type="checkbox" ng-model="res.abre_martes" ng-true-value="1" ng-false-value="0" ng-checked="res.res_abre_martes == 1">
+			       <div class="track">
+			         <div class="handle"></div>
+			       </div>
+			     </label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<select name="" id="" ng-model="res.res_martes_abre_am" ng-change="changeSettingValue('res_martes_abre_am', res.res_martes_abre_am)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_martes_abre_am == hora">{{ hora }}</option>
+					</select>
+				</td>
+				<td>
+					<select name="" id="" ng-model="res.res_martes_cierra_am" ng-change="changeSettingValue('res_martes_cierra_am', res.res_martes_cierra_am)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_martes_cierra_am == hora">{{ hora }}</option>
+					</select>
+				</td>
+				<td>
+					<select name="" id="" ng-model="res.res_martes_abre_pm" ng-change="changeSettingValue('res_martes_abre_pm', res.res_martes_abre_pm)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_martes_abre_pm == hora">{{ hora }}</option>
+					</select>
+				</td>
+				<td>
+					<select name="" id="" ng-model="res.res_martes_cierra_pm" ng-change="changeSettingValue('res_martes_cierra_pm', res.res_martes_cierra_pm)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_martes_cierra_pm == hora">{{ hora }}</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+
+		<!-- MIERCOLES -->
+		<table>
+			<tr>
+				<td>Mi</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td rowspan="2">
+			     <label class="toggle toggle-assertive openDay">
+			       <input type="checkbox" ng-model="res.abre_miercoles" ng-true-value="1" ng-false-value="0" ng-checked="res.res_abre_miercoles == 1">
+			       <div class="track">
+			         <div class="handle"></div>
+			       </div>
+			     </label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<select name="" id="" ng-model="res.res_miercoles_abre_am" ng-change="changeSettingValue('res_miercoles_abre_am', res.res_miercoles_abre_am)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_miercoles_abre_am == hora">{{ hora }}</option>
+					</select>
+				</td>
+				<td>
+					<select name="" id="" ng-model="res.res_miercoles_cierra_am" ng-change="changeSettingValue('res_miercoles_cierra_am', res.res_miercoles_cierra_am)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_miercoles_cierra_am == hora">{{ hora }}</option>
+					</select>
+				</td>
+				<td>
+					<select name="" id="" ng-model="res.res_miercoles_abre_pm" ng-change="changeSettingValue('res_miercoles_abre_pm', res.res_miercoles_abre_pm)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_miercoles_abre_pm == hora">{{ hora }}</option>
+					</select>
+				</td>
+				<td>
+					<select name="" id="" ng-model="res.res_miercoles_cierra_pm" ng-change="changeSettingValue('res_miercoles_cierra_pm', res.res_miercoles_cierra_pm)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_miercoles_cierra_pm == hora">{{ hora }}</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+
+
+		<!-- JUEVES -->
+		<table>
+			<tr>
+				<td>Ju</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td rowspan="2">
+			     <label class="toggle toggle-assertive openDay">
+			       <input type="checkbox" ng-model="res.abre_jueves" ng-true-value="1" ng-false-value="0" ng-checked="res.res_abre_jueves == 1">
+			       <div class="track">
+			         <div class="handle"></div>
+			       </div>
+			     </label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<select name="" id="" ng-model="res.res_jueves_abre_am" ng-change="changeSettingValue('res_jueves_abre_am', res.res_jueves_abre_am)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_jueves_abre_am == hora">{{ hora }}</option>
+					</select>
+				</td>
+				<td>
+					<select name="" id="" ng-model="res.res_jueves_cierra_am" ng-change="changeSettingValue('res_jueves_cierra_am', res.res_jueves_cierra_am)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_jueves_cierra_am == hora">{{ hora }}</option>
+					</select>
+				</td>
+				<td>
+					<select name="" id="" ng-model="res.res_jueves_abre_pm" ng-change="changeSettingValue('res_jueves_abre_pm', res.res_jueves_abre_pm)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_jueves_abre_pm == hora">{{ hora }}</option>
+					</select>
+				</td>
+				<td>
+					<select name="" id="" ng-model="res.res_jueves_cierra_pm" ng-change="changeSettingValue('res_jueves_cierra_pm', res.res_jueves_cierra_pm)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_jueves_cierra_pm == hora">{{ hora }}</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+
+
+		<!-- VIERNES -->
+		<table>
+			<tr>
+				<td>Vi</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td rowspan="2">
+			     <label class="toggle toggle-assertive openDay">
+			       <input type="checkbox" ng-model="res.abre_viernes" ng-true-value="1" ng-false-value="0" ng-checked="res.res_abre_viernes == 1">
+			       <div class="track">
+			         <div class="handle"></div>
+			       </div>
+			     </label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<select name="" id="" ng-model="res.res_viernes_abre_am" ng-change="changeSettingValue('res_viernes_abre_am', res.res_viernes_abre_am)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_viernes_abre_am == hora">{{ hora }}</option>
+					</select>
+				</td>
+				<td>
+					<select name="" id="" ng-model="res.res_viernes_cierra_am" ng-change="changeSettingValue('res_viernes_cierra_am', res.res_viernes_cierra_am)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_viernes_cierra_am == hora">{{ hora }}</option>
+					</select>
+				</td>
+				<td>
+					<select name="" id="" ng-model="res.res_viernes_abre_pm" ng-change="changeSettingValue('res_viernes_abre_pm', res.res_viernes_abre_pm)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_viernes_abre_pm == hora">{{ hora }}</option>
+					</select>
+				</td>
+				<td>
+					<select name="" id="" ng-model="res.res_viernes_cierra_pm" ng-change="changeSettingValue('res_viernes_cierra_pm', res.res_viernes_cierra_pm)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_viernes_cierra_pm == hora">{{ hora }}</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+
+
+		<!-- SABADO -->
+		<table>
+			<tr>
+				<td>Sa</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td rowspan="2">
+			     <label class="toggle toggle-assertive openDay">
+
+			       <input type="checkbox" ng-model="res.abre_sabado" ng-true-value="1" ng-false-value="0" ng-checked="res.res_abre_sabado == 1">
+			       <div class="track">
+			         <div class="handle"></div>
+			       </div>
+			     </label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<select name="" id="" ng-model="res.res_sabado_abre_am" ng-change="changeSettingValue('res_sabado_abre_am', res.res_sabado_abre_am)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_sabado_abre_am == hora">{{ hora }}</option>
+					</select>
+				</td>
+				<td>
+					<select name="" id="" ng-model="res.res_sabado_cierra_am" ng-change="changeSettingValue('res_sabado_cierra_am', res.res_sabado_cierra_am)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_sabado_cierra_am == hora">{{ hora }}</option>
+					</select>
+				</td>
+				<td>
+					<select name="" id="" ng-model="res.res_sabado_abre_pm" ng-change="changeSettingValue('res_sabado_abre_pm', res.res_sabado_abre_pm)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_sabado_abre_pm == hora">{{ hora }}</option>
+					</select>
+				</td>
+				<td>
+					<select name="" id="" ng-model="res.res_sabado_cierra_pm" ng-change="changeSettingValue('res_sabado_cierra_pm', res.res_sabado_cierra_pm)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_sabado_cierra_pm == hora">{{ hora }}</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+
+
+		<!-- Domingo -->
+		<table>
+			<tr>
+				<td>Do</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td rowspan="2">
+			     <label class="toggle toggle-assertive openDay">
+			       <input type="checkbox" ng-model="res.abre_domingo" ng-true-value="1" ng-false-value="0" ng-checked="res.res_abre_domingo == 1">
+			       <div class="track">
+			         <div class="handle"></div>
+			       </div>
+			     </label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<select name="" id="" ng-model="res.res_domingo_abre_am" ng-change="changeSettingValue('res_domingo_abre_am', res.res_domingo_abre_am)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_domingo_abre_am == hora">{{ hora }}</option>
+					</select>
+				</td>
+				<td>
+					<select name="" id="" ng-model="res.res_domingo_cierra_am" ng-change="changeSettingValue('res_domingo_cierra_am', res.res_domingo_cierra_am)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_domingo_cierra_am == hora">{{ hora }}</option>
+					</select>
+				</td>
+				<td>
+					<select name="" id="" ng-model="res.res_domingo_abre_pm" ng-change="changeSettingValue('res_domingo_abre_pm', res.res_domingo_abre_pm)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_domingo_abre_pm == hora">{{ hora }}</option>
+					</select>
+				</td>
+				<td>
+					<select name="" id="" ng-model="res.res_domingo_cierra_pm" ng-change="changeSettingValue('res_domingo_cierra_pm', res.res_domingo_cierra_pm)">
+						<option value="{{ hora }}" ng-repeat="hora in horas" ng-selected="res.res_domingo_cierra_pm == hora">{{ hora }}</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+
+
+
+		<!-- Dias de cierre puntual -->
+		<h4 style="margin-top: 30px; margin-bottom: 0 !important;">Dias festivos</h4>
+		<div class="list diasFestivos" style="margin-bottom: 10px;">
+		  <label class="item item-input">
+		    <span class="input-label" style="margin-left: 11px;">Dias de cierre</span>
+		    <input type="text" onfocus="this.type='date'" placeholder="Seleccionar una fecha">
+		  </label>
+		  <button class="button button-block button-positive margin-5">
+			  Añadir
+			</button>
+		</div>
+		<hr>	
+		<table class="diasCierre">
+			<tr>
+				<td><span style="color: gray; font-style: italic;">Cerrado</span></td>
+				<td>10-12-2015</td>
+				<td><i class="icon ion-ios-close-outline" style="font-size: 22px;" class="red"></i></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><span style="color: gray; font-style: italic;">Cerrado</span></td>
+				<td>10-12-2015</td>
+				<td><i class="icon ion-ios-close-outline" style="font-size: 22px;" class="red"></i></td>
+				<td>	</td>
+			</tr>
+			<tr>
+				<td><span style="color: gray; font-style: italic;">Cerrado</span></td>
+				<td>10-12-2015</td>
+				<td><i class="icon ion-ios-close-outline" style="font-size: 22px;" class="red"></i></td>
+				<td>	</td>
+			</tr>
+		</table>
+	</div>
+
+
+	<!-- Settings -->
+	<div class="list" ng-if="tabRes == 'settings'">
+	  <label class="item item-input item-select">
+	    <div class="input-label">
+	      Intervalo reservas
+	    </div>
+	    <select ng-model="res.res_intervalo_horario">
+	      <option ng-selected="res.res_intervalo_horario == '10'">10 minutos</option>
+	      <option ng-selected="res.res_intervalo_horario == '15'">15 minutos</option>
+	      <option ng-selected="res.res_intervalo_horario == '20'">20 minutos</option>
+	      <option ng-selected="res.res_intervalo_horario == '30'">30 minutos</option>
+	      <option ng-selected="res.res_intervalo_horario == '60'">1 hora</option>
+	    </select>
+	  </label>
+	  <label class="item item-input">
+	    <span class="input-label">Max personas/turno</span>
+	    <input type="text" ng-model="res.res_aforo_maximo">
+	  </label>
+	  <label class="item item-input">
+	    <span class="input-label">Max personas/reserva</span>
+	    <input type="text" ng-model="res.res_max_mesa">
+	  </label>
+
+		<ul class="list">
+
+		  <li class="item item-toggle">
+		     Activar reservas
+		     <label class="toggle toggle-assertive">
+		       <input type="checkbox" ng-checked="res.co_section_reservas_activo == 1" ng-true-value="'1'" ng-false-value="'0'" ng-change="changeSettingValue('co_section_reservas_activo', res.co_section_reservas_activo)" ng-model="res.co_section_reservas_activo">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		  </li>
+
+		  <li class="item item-toggle">
+		     Activar comentarios
+		     <label class="toggle toggle-assertive">
+		       <input type="checkbox" ng-checked="res.co_section_comentarios_activo == 1" ng-true-value="'1'" ng-false-value="'0'" ng-change="changeSettingValue('co_section_comentarios_activo', res.co_section_comentarios_activo)" ng-model="res.co_section_comentarios_activo">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		  </li>
+
+		  <li class="item item-toggle">
+		     Recibir correos de reserva
+		     <label class="toggle toggle-assertive">
+		       <input type="checkbox">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		  </li>
+
+		 </ul>
+
+
+
+	  <button class="button button-full button-dark CoColor" ng-click="saveRes()">
+		  Guardar
+		</button>
+	</div>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+  </ion-content>
+</ion-view>
+

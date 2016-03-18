@@ -1,0 +1,15 @@
+<ion-view view-title="Galeria">
+  <ion-content>
+		<br>
+		<br>
+		  <div ng-repeat="imagen in imagenes" class="galeria">
+		  	<img src="http://ancoradelserrallo.com/img/galeria/{{ imagen.ruta }}" ng-click="selectImg($index)" alt="{{ imagen.titulo }}" >
+			<input type="text" value="{{ imagen.titulo }}" > 
+			<div class="checkDelImage">
+				<img src="img/unchecked.png" ng-if="!imagen.del" alt=""><img src="img/checked.png" ng-if="imagen.del" alt="">
+			</div>
+
+		  	
+		  </div>
+  </ion-content>
+</ion-view>

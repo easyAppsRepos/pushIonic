@@ -1,0 +1,58 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-dark"  ng-show="userData">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon"  ng-show="!back_button_show" menu-toggle="left">
+        </button>
+		 <button class="button button-icon button-clear ion-ios-arrow-back" ng-show="back_button_show" ng-click="volver()">
+        </button>
+      </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear  ion-ios-camera-outline cfff" ng-show="galeriaBtns == '1'" ng-click="getPicture()">
+        </button>
+        <button class="button button-icon button-clear  ion-ios-cloud-upload-outline cfff" ng-show="galeriaBtns == '1'" ng-click="imgToGal()">
+        </button>
+        <button class="button button-icon button-clear  ion-ios-trash-outline cfff" ng-show="galeriaBtns == '1'" ng-click="trash()">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-stable">
+      <h1 class="title">Ancora</h1>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+        <ion-item menu-close href="#/app/reservas">
+          Reservas
+        </ion-item>
+        <ion-item menu-close href="#/app/comentarios">
+          Comentarios
+        </ion-item>
+        <!--<ion-item menu-close href="#/app/galeria">
+          Galeria
+        </ion-item>-->
+        <ion-item menu-close href="#/app/res">
+          Restaurant
+        </ion-item>
+        <ion-item menu-close href="#/app/usuarios">
+          Usuarios
+        </ion-item>
+        <ion-item menu-close ng-click="logout()">
+          Logout
+        </ion-item>
+
+      </ion-list>
+      <div style="position: absolute; top: 0; height: 100% !important;">
+        <div style="height: 100%; position: relative;"></div>
+        <img src="img/CoPanel.png" alt="" style="width: 60%; position: fixed !important; bottom: 15px !important; margin-left: 19%; ">
+      </div>
+          
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

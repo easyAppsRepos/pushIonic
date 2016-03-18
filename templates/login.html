@@ -1,0 +1,18 @@
+<ion-nav-view view-title="Login">
+  <ion-content>
+  	<br>
+    <h1><img src="img/CoPanel.png" style="margin: 15px 14% !important; width: 70%" alt=""></h1>
+    <div class="list">
+	  <label class="item item-input">
+	    <input type="email" placeholder="E-Mail" ng-model="login.email">
+	  </label>
+	  <label class="item item-input">
+	    <input type="password" placeholder="Password" ng-model="login.password">
+	  </label>
+	  <button class="button button-block button-positive CoColor" ng-click="doLogin()">
+		  	Iniciar Sesión
+		</button>
+		{{ userLog }}
+	</div>
+  </ion-content>
+</ion-nav-view>

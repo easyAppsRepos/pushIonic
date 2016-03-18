@@ -1,0 +1,311 @@
+/* Empty. Add your own CSS if you like */
+
+
+textarea {
+	min-height: 130px;
+}
+
+
+.noline{
+	border: 0px;
+}
+.reservaDatos {
+	font-size: 14px !important;	
+}
+.reservas {
+	border-radius: 4px !important;
+	border: 1px solid #eceff1;
+	margin: 0 !important;
+}
+.reservaDatos td {
+	vertical-align: middle;
+}
+.reservaDatos  td i{
+	font-size: 24px !important;	
+	margin-right: 10px;
+}
+.reservas .item.danger, .reservas .row.danger {
+	background: #fef8c5;
+}
+.reservas .item-header {
+	background: #eceff1;
+	padding: 5px 10px;
+}
+.reservas .item-header h2 {
+	color: #000;
+}
+.reservas .item-header div div p {
+	color: #333 !important;
+}
+
+/* COMENTARIOS */
+
+.comentario.danger .item {
+	background: #fef8c5 ;
+}
+
+/* GALERIA */
+.galeria {
+	position: relative;
+
+}
+.galeria img{
+	width: 90%; 
+	margin-left: 5%;
+}
+.galeria input[type="text"] {
+	display: inline-block !important; 
+	margin: -5px 0 15px 18px; 
+	width: 79%;
+}
+.galeria .item-checkbox {
+	border: 1px solid green !important;
+	height: 80%;
+	background: none;
+	position: absolute;
+	top: 5px !important;
+	border: 0;
+	padding-right:15px;
+	padding-left:15px !important;
+	left: 0;
+	right: 10px;
+	top: 3px;
+	display: inline-block !important;
+	vertical-align: top !important;
+}
+.galeria .item-checkbox .checkbox-icon {
+	position: absolute !important;
+	margin-top: 5px !important;
+	right:10px !important;
+	float: right;
+}
+.galeria .checkbox-icon:before {
+	background: none;
+	border: 3px solid #fff !important;
+	border-radius: 50% !important;
+}
+
+/* USUARIOS */
+
+.usuarios .item {
+	padding: 0 ;
+}
+.usuarios .item-input {
+	padding: 0 10px;
+}
+
+/* HORARIO */
+.horario table {
+	border-bottom: 1px solid rgba(0,0,0,.1);
+	font-size: 16px;
+	width: 100%;
+}
+.horario table:nth-child(even){
+	background: rgba(200,200,200,.3);
+}
+.horario tr:nth-child(1) td{
+	padding-top: 7px !important;
+}
+.horario tr:nth-child(2) td{
+	padding-bottom: 10px;
+}
+.horario table tr:nth-child(1) td:nth-child(1) {
+	font-weight: 600;
+}
+.horario table td {
+	padding-left: 10px;
+	text-align: left;
+	vertical-align: middle !important;
+	width: 20% !important;
+}
+.horario table select  {
+	background: none;
+	border: 0;
+	border-bottom: 1px solid rgba(84, 111, 123, 0.47) !important;
+}
+
+.horario table .toggle input:checked + .track {
+	border-color: rgba(0,0,0,.1) !important;
+	background: #4db6ac;
+}
+.horario h4 {
+	margin-left: 10px;
+}
+
+.horario .button-positive {
+	background: #546f7b !important;
+	margin: 5px;
+}
+.horario .list .item{
+	border: 0 !important;
+}
+.horario .diasFestivos .input-label,.horario .diasFestivos .item-input{
+	padding: 0 !important;
+}
+.horario .diasCierre {
+	border: 0 !important;
+	margin: 0 auto;
+	background: none !important;
+	width: 100%;
+} 
+.horario .diasCierre tr:nth-child(even){
+	background: rgba(200,200,200,.3) !important;
+}
+.horario .diasCierre td{
+	border-bottom: 1px solid #ccc !important;
+	line-height: 30px !important;
+	padding-top: 10px !important;
+}
+.horario .diasCierre td:nth-child(1){
+	padding-left: 11px !important;
+	font-weight: 400 !important;
+	text-align: left !important;
+
+}
+.horario .diasCierre td:nth-child(2){
+
+}
+.horario .diasCierre td:nth-child(3){
+	padding-left: 22px !important;
+	color: red !important;
+	text-align: left !important;
+}
+.horario .diasCierre td {
+	padding: 0 !important;
+	text-align: center;
+}
+
+.bar {
+	background: #546f7b !important;
+}
+.color-blue {
+	background: #546f7b !important;
+}
+.list-color{
+	background: #FAFAFA !important;
+}
+.list-ant-color{
+	background: #E3E3E3 !important;
+}
+.list-color-select{
+	background: #E8ECEF !important;
+}
+.fuente-t1{
+	color:  #546f7b;
+}
+.bar-footer .tab-item {
+	background: #37474f;
+	color: #eceff1;
+}
+.borderDanger {
+	border: 2px solid red !important;
+}
+.btn-text-center {
+	background: #37474f;
+	border-left:1px solid #fff;
+	font-weight: 300;
+	color: #eceff1;
+	text-align: center;
+	margin: 0;
+}
+.btn-text-center:active {
+	font-weight: 300;
+	color: #37474f;
+	text-align: center;
+	background: #eceff1;
+}
+.btn-text-center.red {
+	color: #fff !important;
+	background: #ea5351;
+}
+.btn-text-center.ligth {
+	background: #546f7b;
+}
+.checkDelImage {
+	position: absolute;
+	height: 30px;
+	top: 5px;
+	right: 20px;
+	width: 30px;
+}
+.errorBox {
+	border: 1px solid red;
+	color: red;
+	display: block;
+	padding: 5px;
+	text-align: center;
+}
+.CoColor {
+	background: #546f7b !important;
+}
+.cfff {
+	color: #fff !important;
+}
+.info {
+	padding: 20px;
+	font-weight: 600;
+	text-align: center;
+}
+.padding_0 {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.push-number {
+	display: inline-block;
+	color: #fff;
+	position:absolute;
+	box-shadow: 0 0 5px 0 rgba(0,0,0,.3);
+	background: red;
+	border-radius: 100%;
+	font-weight: 600;
+	line-height: 20px;
+	text-align: center !important;
+	height: 20px !important;
+	width: 20px !important;
+	vertical-align: top;
+	font-size: 16px;
+}
+
+.tabs-striped .tabs {
+	background: #546f7b !important;
+}
+
+.tabs-striped.tabs-color-light .tab-item {
+    color: rgba(255, 255, 255, 0.7) !important;
+	font-weight: 700;
+}
+.tabs-striped.tabs-color-light .tab-item.active {
+	border-bottom: 4px solid #fff !important;
+    color: rgba(255, 255, 255, 1) !important;
+	font-weight: 700;
+}
+
+.red {
+	color: #a94442 !important;
+}
+.green {
+	color: green !important;
+}
+.yellow {
+	color: #8a6d3b !important;
+}
+.danger {
+	background: #fef8c5 !important;
+}
+
+.input-label {
+	font-weight: 600 !important;
+}
+.bar.bar-stable .title {
+    color: #fff;
+}
+
+/*   Dias   */
+
+.img-med{
+	width:60%
+}
+
+.dias-push{
+	right: 14px
+}

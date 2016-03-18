@@ -1,0 +1,52 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title" style="color: #fff;">Detalles reserva id: <b>{{ reservaDetails.id }}</b></h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="hideDetallesReserva()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="updateReserva()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Nombre</span>
+          <input type="text" ng-model="reservaDetails.nombre">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Telefono</span>
+          <input type="tel" ng-model="reservaDetails.telefono">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Email</span>
+          <input type="email" ng-model="reservaDetails.email">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Fecha</span>
+          <input type="date" ng-model="reservaDetails.fecha_reserva">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Hora</span>
+          <input type="time" value="{{reservaDetails.hora_reserva}}" id="horaReservaInput">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Nº personas</span>
+          <input type="num" ng-model="reservaDetails.numero_personas">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Zona</span>
+          <select ng-model="reservaDetails.zona" id="">
+            <option ng-selected="reservaDetails.zona == 'planta-baja'" value="planta-baja">Planta baja</option>
+            <option ng-selected="reservaDetails.zona == 'primer-piso'" value="primer-piso">Primer piso</option>
+            <option ng-selected="reservaDetails.zona == 'terraza'" value="terraza">Terraza</option>
+          </select>
+        </label>
+        <label class="item item-input">
+          <textarea class"input-corto" placeholder="Comentarios">{{ reservaDetails.notas }}</textarea>
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive CoColor" type="submit">Modificar</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

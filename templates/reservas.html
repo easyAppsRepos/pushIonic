@@ -1,0 +1,229 @@
+<script src="lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script>
+  <div class="tabs-striped tabs-top  tabs-color-light">
+    <div class="tabs">
+      <a class="tab-item active" href="#" ng-class="{active: tipoReservas == 'semana'}" href="#" ng-click="tipoReservas = 'semana'; movetoSlide(0)">
+         Semana 
+      </a>
+      <a class="tab-item" href="#" ng-class="{active: tipoReservas == 'calendario'}" href="#" ng-click="tipoReservas = 'calendario'; movetoSlide(0)">
+         Calendario 
+      </a>
+      <a class="tab-item" href="#" ng-class="{active: tipoReservas == 'eliminadas'}" href="#" ng-click="tipoReservas = 'eliminadas'; movetoSlide(0)">
+        Papelera <span class="push-number" ng-if="reservasEliminadas.length > 0">{{ reservasEliminadas.length }}</span>
+      </a>
+    </div>
+  </div>
+
+
+<ion-view view-title="Reservas">
+<ion-content>
+<ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false">
+  <ion-slide>
+<br><br>
+<!--Dias-->
+<div class="list reservas " ng-if="tipoReservas == 'semana'">
+	<br>
+	<a class="item item-icon-left item-icon-right noline fuente-t1" href="#" style="color: #546f7b;font-weight: 500;" ng-click="obt_fecha_dia(1);nextSlide(); back_button_show=true">
+		<i class="icon" > <img class="img-med" src="img/Dias/Lunes.png"> <span class="push-number dias-push" ng-if="cont_dia[1] > 0">{{ cont_dia[1] }}</span></i>
+		Lunes
+		<i class="icon ion-ios-arrow-right" ng-click="obt_fecha_dia(1);nextSlide(); back_button_show=true"></i>
+	</a>
+	<a class="item item-icon-left item-icon-right noline" href="#" style="color: #546f7b;font-weight: 500;" ng-click="obt_fecha_dia(2);nextSlide(); back_button_show=true">
+		<i c<i class="icon" > <img class="img-med" src="img/Dias/Martes.png"> <span class="push-number dias-push " ng-if="cont_dia[2] > 0">{{ cont_dia[2] }}</span></i>
+		Martes
+		<i class="icon ion-ios-arrow-right" ng-click="obt_fecha_dia(2);nextSlide(); back_button_show=true"></i>
+	</a>
+	<a class="item item-icon-left item-icon-right noline" href="#" style="color: #546f7b;font-weight: 500;" ng-click="obt_fecha_dia(3);nextSlide(); back_button_show=true">
+		<i class="icon" > <img class="img-med" src="img/Dias/Miercoles.png"> <span class="push-number dias-push" ng-if="cont_dia[3] > 0">{{ cont_dia[3] }}</span></i>
+		Miercoles
+		<i class="icon ion-ios-arrow-right" ng-click="obt_fecha_dia(3);nextSlide(); back_button_show=true"></i>
+	</a>
+	<a class="item item-icon-left item-icon-right noline" href="#" style="color: #546f7b;font-weight: 500;" ng-click="obt_fecha_dia(4);nextSlide(); back_button_show=true">
+		<i class="icon" > <img class="img-med" src="img/Dias/Jueves.png"> <span class="push-number dias-push" ng-if="cont_dia[4] > 0">{{ cont_dia[4] }}</span></i>
+		Jueves
+		<i class="icon ion-ios-arrow-right" ng-click="obt_fecha_dia(4);nextSlide(); back_button_show=true"></i>
+	</a>
+	<a class="item item-icon-left item-icon-right noline" href="#" style="color: #546f7b;font-weight: 500;" ng-click="obt_fecha_dia(5);nextSlide(); back_button_show=true">
+		<i class="icon" > <img class="img-med" src="img/Dias/Viernes.png"> <span class="push-number dias-push" ng-if="cont_dia[5] > 0">{{ cont_dia[5] }}</span></i>
+		Viernes
+		<i class="icon ion-ios-arrow-right" ng-click="obt_fecha_dia(5);nextSlide(); back_button_show=true"></i>
+	</a>
+	<a class="item item-icon-left item-icon-right noline" href="#" style="color: #546f7b;font-weight: 500;" ng-click="obt_fecha_dia(6);nextSlide(); back_button_show=true">
+		<i class="icon" > <img class="img-med" src="img/Dias/Sabado.png"> <span class="push-number dias-push" ng-if="cont_dia[6] > 0">{{ cont_dia[6] }}</span></i>
+		Sabado
+		<i class="icon ion-ios-arrow-right" ng-click="obt_fecha_dia(6);nextSlide(); back_button_show=true"></i>
+	</a>
+	<a class="item item-icon-left item-icon-right noline" href="#" style="color: #546f7b;font-weight: 500;" ng-click="obt_fecha_dia(7);nextSlide(); back_button_show=true">
+		<i class="icon" > <img class="img-med" src="img/Dias/Domingo.png"> <span class="push-number dias-push" ng-if="cont_dia[0] > 0">{{ cont_dia[0] }}</span></i>
+		Domingo
+		<i class="icon ion-ios-arrow-right" ng-click="obt_fecha_dia(7);nextSlide(); back_button_show=true"></i>
+	</a>
+</div>
+	
+	
+
+    
+<!-- lista reservas Calendario -->
+	<br>
+	<div class="row">
+		<div class="col col-80 col-offset-10">
+			<div class="" ng-if="tipoReservas == 'calendario'">
+					<onezone-datepicker datepicker-object="onezoneDatepicker">
+						<button class="button button-block button-outline button-positive show-onezone-datepicker" ng-show="false">
+							{{onezoneDatepicker.date | date:'dd MMMM yyyy'}} 
+						</button>
+					</onezone-datepicker>
+					
+				<p class="info" ng-if="reservasAntiguas.length < 1 && tipoReservas == 'antiguas'">No hay reserrvas con fechas pasadas para mostrar.</p>
+				<h5 style="color: #546f7b;font-weight: 500;">Detalles</h5>
+				<div class="list reservas list-ant-color"  ng-repeat="(dia, reservas) in (reservasAntiguas | groupBy: 'fecha_reserva')" >
+					<div class="item item-icon-left list-color noline" style="color: #A0A5A7;font-weight: 300;" ng-click="change_view(dia)" ">
+						<i class="icon" > <img class="img-med" ng-src="{{(Dia_icon(dia))}}"></i> 
+						{{ dia | date:'d MMM' }} | {{contarTurno((dia | date:'EEEE'),reservas)[0]}} Res. Mediodia | {{contarTurno((dia | date:'EEEE'),reservas)[1]}} Res. Noche
+					</div>
+				</div>
+				<div class="list reservas list-color"  ng-repeat="(dia, reservas) in (reservasActivas | groupBy: 'fecha_reserva')" >
+					<div class="item item-icon-left list-color noline" style="color: #576268;font-weight: 500;" ng-click="change_view(dia)" ">
+						<i class="icon" > <img class="img-med" ng-src="{{(Dia_icon(dia))}}"></i> 
+						{{ dia | date:'d MMM' }} | {{contarTurno((dia | date:'EEEE'),reservas)[0]}} Res. Mediodia | {{contarTurno((dia | date:'EEEE'),reservas)[1]}} Res. Noche
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    
+<!-- lista reservas eliminadas -->
+	<div class="list card reservas" ng-class="{danger: reserva.estado == 0}" ng-if="tipoReservas == 'eliminadas'" ng-repeat="reserva in reservasEliminadas">
+
+	  <div class="item item-header">
+	    <h2>{{ reserva.nombre }}</h2>
+	    <div class="row padding_0">
+		    <div class="col"><p><b>El: </b>{{ reserva.fecha_reserva | date: 'dd-MMM-yyyy' }} </p></div>
+		    <div class="col"><p><b>A las: </b>{{ reserva.hora_reserva | date: 'HH:mm'}}</p></div>
+	    </div>
+	  </div>
+
+	  <div class="item item-body">
+	    <p ng-if="reserva.notas != ''">
+	      {{ reserva.notas }}
+	    </p>
+	    	<table class="reservaDatos">
+	    		<tr>
+	    			<td><i class="icon ion-ios-information-outline"></i></td>
+	    			<td><b>{{ reserva.numero_personas }}</b> personas en {{ reserva.zona }}</td>
+	    		</tr>
+	    		<tr>
+	    			<td><i class="icon ion-ios-telephone-outline"></i></td>
+	    			<td><a href="tel:{{ reserva.telefono }}">{{ reserva.telefono }}</a></td>
+	    		</tr>
+	    		<tr>
+	    			<td><i class="icon ion-ios-email-outline"></i></td>
+	    			<td><a href="mailto:{{ reserva.email }}">{{ reserva.email }}</a></td>
+	    		</tr>
+	    	</table>
+	  </div>
+
+	  <div class="row">
+	  	<div class="col btn-text-center" ng-click="changeStateReserva(reserva.id, 1)">Activar</div>
+	  	<div class="col btn-text-center" ng-click="deleteReserva(reserva.id)">Eliminar</div>
+	  </div>
+
+	</div>
+	<p class="info" ng-if="reservasEliminadas.length < 1 && tipoReservas == 'eliminadas'">La papelera está vacía</p>
+<br><br><br><br><br>
+
+</ion-slide>
+<ion-slide>
+
+<br><br><br>
+<!--Antiguas-->
+<div class="list card reservas"  ng-repeat="(dia, reservas) in (reservasAntiguas | groupBy: 'fecha_reserva')"  ng-show="(fecha_m | date:'ddMMyyyy') == (dia | date:'ddMMyyyy')">
+	<div class="item item-icon-left">
+		<i class="icon" > <img class="img-med" ng-src="{{(Dia_icon(dia))}}"></i> 
+		 {{ dia | date:'d MMM' }} | {{contarTurno((dia | date:'EEEE'),reservas)[0]}} Res. Mediodia | {{contarTurno((dia | date:'EEEE'),reservas)[1]}} Res. Noche
+	</div>
+	<div ng-repeat="reserva in reservas" ng-show="(fecha_m | date:'ddMMyyyy') == (dia | date:'ddMMyyyy')">
+	  <div class="item item-header list-ant-color">
+	   <span style="color: #A0A5A7;font-weight: 500;"> {{ reserva.nombre }}</span><span class="item-note" style="color: #A0A5A7;font-weight: 300;">{{ reserva.numero_personas }}<i class="icon ion-ios-person"></i> xxxxxxxx {{ reserva.zona }}</span>
+	    <div class="row padding_0">
+		    <div class="col"><p>{{ reserva.fecha_reserva | date: 'dd-MMM-yyyy' }} {{ reserva.hora_reserva | limitTo : 5}}h </p></div>
+			<a style="padding-left: 30px;" ng-click="display =!display"><i class="icon ion-ios-arrow-down"></i></a>
+	    </div>
+	  </div>
+	  <div class="animate-hide" ng-show="display">
+		  <div class="item item-body list-color" ng-class="{danger: reserva.estado == 0}">
+				<table class="reservaDatos ">
+					<tr>
+						<td><i class="icon ion-ios-telephone-outline"></i></td>
+						<td><a href="tel:{{ reserva.telefono }}"  style="color: #A0A5A7;font-weight: 300;">{{ reserva.telefono }}</a></td>
+					</tr>
+					<tr>
+						<td><i class="icon ion-ios-email-outline"></i></td>
+						<td><a href="mailto:{{ reserva.email }}"  style="color: #A0A5A7;font-weight: 300;">{{ reserva.email }}</a></td>
+					</tr>
+				</table>
+		  </div>
+
+		  <div class="row" ng-class="{danger: reserva.estado == 0}">
+			<div class="col btn-text-center" ng-click="showDetallesReserva(reserva.id)">Editar</div>
+			<div class="col btn-text-center ligth" ng-if="reserva.estado == 1" ng-click="changeStateReserva(reserva.id, 0)">Cancelar</div>
+			<div class="col btn-text-center ligth" ng-if="reserva.estado == 0" ng-click="changeStateReserva(reserva.id, 1)">Activar</div>
+			<div class="col btn-text-center red " ng-click="changeStateReserva(reserva.id, 2)">Eliminar</div>
+		  </div>
+
+		</div>
+	</div>
+</div>
+<!--Activas-->
+<div class="list card reservas"  ng-repeat="(dia, reservas) in (reservasActivas | groupBy: 'fecha_reserva')"  ng-show="(fecha_m | date:'ddMMyyyy') == (dia | date:'ddMMyyyy')">
+	<div class="item item-icon-left">
+		<i class="icon" > <img class="img-med" ng-src="{{(Dia_icon(dia))}}"></i> 
+		 {{ dia | date:'d MMM' }} | {{contarTurno((dia | date:'EEEE'),reservas)[0]}} Res. Mediodia | {{contarTurno((dia | date:'EEEE'),reservas)[1]}} Res. Noche
+	</div>
+	<div ng-repeat="reserva in reservas" ng-show="(fecha_m | date:'ddMMyyyy') == (dia | date:'ddMMyyyy')">
+	  <div class="item item-header list-color-select">
+	   <span style="color: #576268;font-weight: 500;"> {{ reserva.nombre }}</span><span class="item-note" style="color: #576268;font-weight: 300;">{{ reserva.numero_personas }}<i class="icon ion-ios-person"></i> &nbsp;&nbsp;&nbsp;&nbsp; {{ reserva.zona }}</span>
+	    <div class="row padding_0">
+		    <div class="col"><p>{{ reserva.fecha_reserva | date: 'dd-MMM-yyyy' }} {{ reserva.hora_reserva | limitTo : 5}}h </p></div>
+			<a ng-click="display =!display"><i class="icon ion-ios-arrow-down"></i></a>
+	    </div>
+	  </div>
+	  <div class="animate-hide" ng-show="display">
+		  <div class="item item-body list-color" ng-class="{danger: reserva.estado == 0}">
+				<table class="reservaDatos ">
+					<tr>
+						<td><i class="icon ion-ios-telephone-outline"></i></td>
+						<td><a href="tel:{{ reserva.telefono }}"  style="color: #576268;font-weight: 300;">{{ reserva.telefono }}</a></td>
+					</tr>
+					<tr>
+						<td><i class="icon ion-ios-email-outline"></i></td>
+						<td><a href="mailto:{{ reserva.email }}"  style="color: #576268;font-weight: 300;">{{ reserva.email }}</a></td>
+					</tr>
+				</table>
+		  </div>
+
+		  <div class="row" ng-class="{danger: reserva.estado == 0}">
+			<div class="col btn-text-center" ng-click="showDetallesReserva(reserva.id)">Editar</div>
+			<div class="col btn-text-center ligth" ng-if="reserva.estado == 1" ng-click="changeStateReserva(reserva.id, 0)">Cancelar</div>
+			<div class="col btn-text-center ligth" ng-if="reserva.estado == 0" ng-click="changeStateReserva(reserva.id, 1)">Activar</div>
+			<div class="col btn-text-center red " ng-click="changeStateReserva(reserva.id, 2)">Eliminar</div>
+		  </div>
+
+		</div>
+	</div>
+	</div>
+	<div class="list card reservas"    ng-show="nothing">
+		<div class="item item-icon-left">
+			<i class="icon" > <img class="img-med" ng-src="{{(Dia_icon(fecha_m,true))}}"></i> 
+			 {{ fecha_m | date:'d MMM' }} | 0 Res. Mediodia | 0 Res. Noche
+			 
+		</div>
+		
+	</div>
+
+	
+	
+</ion-slide>
+  </ion-content>
+</ion-view>
+
+<script src="lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script>

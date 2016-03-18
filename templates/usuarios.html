@@ -1,0 +1,66 @@
+<ion-view view-title="Usuarios">
+  <ion-content>
+
+	<br>
+	<h3 style="padding-left: 10px;">Nuevo usuario</h3>
+	<div class="list">
+	<form name="formNuevoUsuario">
+	  <label class="item item-input" >
+	    <input name="nombre" type="text" placeholder="Nombre de usuario" ng-required="true" ng-model="nu.nombre" required>
+	  </label>
+	    <!-- <span class="errorBox" ng-if="errorNombre">El nombre de usuario debe contener minimo 4 caracteres</span> -->
+	    <span ng-show="!formNuevoUsuario.$pristine && formNuevoUsuario.nombre.$error.required">Name is required.</span>
+	  <label class="item item-input">
+	    <input type="email" placeholder="E-mail" ng-model="nu.email" required>
+	  </label>
+	  <label class="item item-input">
+	    <input type="password" placeholder="Contraseña" ng-model="nu.pass"></textarea>
+	  </label>
+	  <label class="item item-input">
+	    <input type="password" placeholder="Repetir la contraseña" ng-model="nu.pass2"></textarea>
+	  </label>
+
+	  <label class="item item-input item-select">
+	    <div class="input-label">
+	      Nivel
+	    </div>
+	    <select ng-model="nu.nivel">
+	      <option ng-selected="nu.nivel == 1" ng-value="1">Editor</option>
+	      <option ng-selected="nu.nivel == 2" ng-value="2">Administrador</option>
+	      <option ng-selected="nu.nivel == 3" ng-value="3">Propietario</option>
+	    </select>
+	  </label>
+	  <input type="submit" class="button button-block button-positive margin-5 CoColor" ng-click="newUsuario()" Value="Insertar">
+	</div>
+	</form>
+	<h3 style="padding-left: 10px;">Usuarios</h3>
+	<div class="list usuarios" ng-repeat="usuario in usuarios">
+
+	  <div class="item item-divider">
+	  <label class="item">	
+	  	<div class="row" ng-class="{danger: usuario.locked == 1}">	
+			<div class="col col-75">
+				{{ usuario.name }}
+			</div>
+			<div class="col col-25">	
+				<label class="icon ion-unlocked green" ng-click="lockUnlockUsuario(usuario.id, 0)" ng-if="usuario.locked == 1"></label>
+				<label class="icon ion-locked yellow" ng-click="lockUnlockUsuario(usuario.id, 1)" ng-if="usuario.locked != 1"></label>
+				<label class="icon ion-close-round red" data-ng-click="deleteUsuario(usuario.id)"></label>
+
+			</div>
+	  	</div>
+	  </label>
+
+
+	  <label class="item item-input item-select">
+	    <div class="input-label">
+	      Nivel
+	    </div>
+	    <select ng-model="usuario.nivel" ng-change="changeUserNivel(usuario.id, usuario.nivel)">
+	      <option ng-selected="usuario.nivel == 1" ng-value="1">Editor</option>
+	      <option ng-selected="usuario.nivel == 2" ng-value="2">Administrador</option>
+	      <option ng-selected="usuario.nivel == 3" ng-value="3">Propietario</option>
+	    </select>
+	  </label>
+	</div>
+</div>

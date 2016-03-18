@@ -1,0 +1,89 @@
+
+  <div class="tabs-striped tabs-top  tabs-color-light">
+    <div class="tabs">
+      <a class="tab-item active" href="#"ng-class="{active: tabComentarios == 'comentarios'}" href="#" ng-click="tabComentarios = 'comentarios'">
+        Comentarios <span class="push-number" ng-if="comentariosActivos > 0">{{ comentariosActivos }}</span>
+      </a>
+      <a class="tab-item" href="#" ng-class="{active: tabComentarios == 'papelera'}" href="#" ng-click="tabComentarios = 'papelera'">
+        Papelera <span class="push-number" ng-if="comentariosPapelera > 0">{{ comentariosPapelera }}</span>
+      </a>
+    </div>
+  </div>
+
+
+<ion-view view-title="Comentarios">
+  <ion-content>
+
+
+	<h1>Comentarios</h1>
+
+	<!-- ACTIVOS -->
+
+
+	<div class="list card comentario" ng-class="{danger: comentario.estado == 1}" ng-repeat="comentario in comentarios" ng-if="comentario.estado > 0 && tabComentarios == 'comentarios'">
+
+	  <div class="item item-avatar">
+	    <img src="img/noavatar.png">
+	    <h2>{{ comentario.nombre }}</h2>
+	    <p>{{ comentario.created_at | date: 'dd-MMM-yyyy' }}</p>
+	  </div>
+
+	  <div class="item item-body">
+	    <img ng-if="comentario.imagenes != null" class="full-image" src="http://ancoradelserrallo.com/img/imgComments/{{ comentario.imagenes }}">
+	    <p>{{ comentario.comentario }}</p>
+	    <p>
+	      <a href="#" class="subdued"><a href="mailto:{{ comentario.email }}">{{ comentario.email }}</a>
+	    </p>
+	  </div>
+
+	  <div class="item tabs tabs-secondary tabs-icon-left">
+	    <a class="tab-item" href="#" ng-if="comentario.estado == 2" ng-click="updateComentario(comentario.id, 1)">
+	      <i class="icon ion-close-circled"></i>
+	      Desactivar
+	    </a>
+	    <a class="tab-item" href="#" ng-if="comentario.estado == 1" ng-click="updateComentario(comentario.id, 2)">
+	      <i class="icon ion-checkmark-circled"></i>
+	      Activar
+	    </a>
+	    <a class="tab-item" href="#" ng-click="updateComentario(comentario.id, 0)">
+	      <i class="icon ion-trash-a"></i>
+	      Eliminar
+	    </a>
+	  </div>
+
+	</div>
+
+	<!-- PAPELERA -->
+
+	<div class="list card comentario" ng-repeat="comentario in comentarios" ng-if="comentario.estado == 0 && tabComentarios == 'papelera'">
+
+	  <div class="item item-avatar">
+	    <img src="img/noavatar.png">
+	    <h2>{{ comentario.nombre }}</h2>
+	    <p>{{ comentario.created_at | date: 'dd-MMM-yyyy' }}</p>
+	  </div>
+
+	  <div class="item item-body">
+	    <img ng-if="comentario.imagenes != null" class="full-image" src="http://ancoradelserrallo.com/img/imgComments/{{ comentario.imagenes }}">
+	    <p>{{ comentario.comentario }}</p>
+	    <p>
+	      <a href="#" class="subdued"><a href="mailto:{{ comentario.email }}">{{ comentario.email }}</a>
+	    </p>
+	  </div>
+
+	  <div class="item tabs tabs-secondary tabs-icon-left">
+	    <a class="tab-item" href="#" ng-click="updateComentario(comentario.id, 1)">
+	      <i class="icon ion-checkmark-circled"></i>
+	      Rectivar
+	    </a>
+	    <a class="tab-item" href="#" ng-click="deleteComentario(comentario.id)">
+	      <i class="icon ion-trash-a"></i>
+	      Eliminar
+	    </a>
+	  </div>
+
+	</div>
+<br><br><br><br>
+
+  </ion-content>
+</ion-view>
