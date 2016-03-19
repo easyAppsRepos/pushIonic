@@ -9,6 +9,36 @@ angular.module('starter', ['ionic','ionic.service.core',  'starter.controllers',
 .run(function($ionicPlatform , $ionicPopup, $cordovaStatusbar, $rootScope, $http, $cordovaNetwork) {
   $ionicPlatform.ready(function() {
 
+
+console.log("ondevicereadu");
+    var push = PushNotification.init({
+    android: {
+        senderID: "332867885048"
+    },
+    ios: {
+        alert: "true",
+        badge: "true",
+        sound: "true"
+    },
+    windows: {}
+});
+
+push.on('registration', function(data) {
+    console.log(data.registrationId);
+});
+
+push.on('notification', function(data) {
+    console.log(data.message);
+    // data.title,
+    // data.count,
+    // data.sound,
+    // data.image,
+    console.log( data.additionalData);
+});
+
+push.on('error', function(e) {
+    console.log(e.message);
+});
  
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
