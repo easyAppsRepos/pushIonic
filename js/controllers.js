@@ -791,8 +791,8 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
     $auth.login(credenciales).then(function(data){
 
       var pushkey=  localStorage.getItem('pushKey');
-      var device= device.platform;
-      var uuid=device.uuid;
+      var device= localStorage.getItem('device');
+      var uuid=localStorage.getItem('uuid');
 
       $scope.addPush($scope.login.email, device, pushKey, uuid);
 

@@ -12,6 +12,9 @@ angular.module('starter', ['ionic','ionic.service.core',  'starter.controllers',
 
 alert("ondevicereadu");
 console.log(localStorage.getItem('user'));
+alert(device.model);
+localStorage.setItem('device', device.platform);
+localStorage.setItem('uuid', data.uuid);
 
     var push = PushNotification.init({
     android: {
