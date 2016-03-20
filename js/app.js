@@ -27,7 +27,14 @@ console.log(localStorage.getItem('user'));
 
 push.on('registration', function(data) {
     console.log(data.registrationId);
-    alert(data.registrationId);
+    //alert(data.registrationId);
+  // alert(device.platform);
+
+
+       localStorage.setItem('pushKey', data.registrationId);
+
+
+
 });
 
 push.on('notification', function(data) {

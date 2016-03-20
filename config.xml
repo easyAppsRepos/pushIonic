@@ -28,6 +28,7 @@
     <param name="SENDER_ID" value="332867885048" />
 </plugin>
 
+<gap:plugin name="cordova-plugin-device" version="" source="npm" />
   <gap:plugin name="cordova-plugin-whitelist" version="1.0.0" source="npm" />
   <gap:plugin name="cordova-plugin-network-information" source="npm" version="1.0.1" />
 </widget>
