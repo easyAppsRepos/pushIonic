@@ -763,6 +763,7 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
   
   $scope.addPush = function(email,platformDevice,pushKey, deviceID){
       
+      console.log("tdo:"+email+"tdo:"+platformDevice+"tdo:"+pushKey+"tdo:"+deviceID);
       push={emailUser:email, platformDevice:platformDevice, pushKey:pushKey,deviceID:deviceID};
       console.log(push);
       /*
@@ -791,8 +792,8 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
     $auth.login(credenciales).then(function(data){
 
       var pushkey=  localStorage.getItem('pushKey');
-      var device= localStorage.getItem('device');
-      var uuid=localStorage.getItem('uuid');
+      var device= ionic.Platform.platform();
+      var uuid=ionic.Platform.device();
 
       $scope.addPush($scope.login.email, device, pushKey, uuid);
 
