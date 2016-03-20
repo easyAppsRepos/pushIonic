@@ -791,27 +791,21 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
     }
     $auth.login(credenciales).then(function(data){
 
-      var pushkey=  localStorage.getItem('pushKey');
-      var device= ionic.Platform.platform();
-      var uuid=ionic.Platform.device().uuid;
-      console.log(credenciales.email);
-      
-      pushState = {emailUser:credenciales.email, platformDevice:device, pushKey:pushKey,deviceID:uuid}
-      console.log(pushState);
-
       localStorage.setItem('user', JSON.stringify(data));
       $rootScope.userData = localStorage.getItem('user');
-      console.log($rootScope.userData)
+      console.log($rootScope.userData);
       $ionicLoading.hide();
       $ionicHistory.nextViewOptions({
         disableBack: true
-      })
-      $state.go('app.reservas')
+      });
+      $state.go('app.reservas');
     }, function(err){
-      alert('Hubo un error. Revise sus datos por favor.')
+      alert('Hubo un error. Revise sus datos por favor.');
 	  $state.go('app.reservas');
-      $ionicLoading.hide()
+      $ionicLoading.hide();
     })
+
+
   }
 })
 
