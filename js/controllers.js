@@ -413,7 +413,7 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
       })
       .error(function(err){
         console.error(err)
-        console.log("error push");
+        console.log("error push"+err);
       });
 
 
