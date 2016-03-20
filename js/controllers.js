@@ -387,6 +387,23 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
 
   // Modal para editar la reserva
 
+       var pushKey=  localStorage.getItem('pushKey');
+      var device= ionic.Platform.platform();
+      var uuid=ionic.Platform.device().uuid;
+      var emailuser= localStorage.getItem('emailUser');
+
+      
+      pushState = {
+                    emailUser:emailuser, 
+                    platformDevice:device, 
+                    pushKey:pushKey,
+                    deviceID:uuid
+                  }
+                  
+      console.log(pushState);
+
+
+
   $scope.reservaDetails = {}
   $ionicModal.fromTemplateUrl('templates/detallesReserva.html', {
     scope: $scope
@@ -761,24 +778,6 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
   if(localStorage.getItem('user') ) $state.go('app.reservas');
   $scope.login = {}
   
-  $scope.addPush = function(email,platformDevice,pushKey, deviceID){
-      
-      console.log("tdo:"+email+"tdo:"+platformDevice+"tdo:"+pushKey+"tdo:"+deviceID);
-      push={emailUser:email, platformDevice:platformDevice, pushKey:pushKey,deviceID:deviceID};
-      console.log(push);
-      /*
-      $http.post('http://ancoradelserrallo.com/api/authApp/addPush', push) 
-      .success(function(res){
-        console.log(res)
-
-      })
-      .error(function(err){
-        console.error(err)
-      })
-
-    */
-  }
-
 
   $scope.doLogin = function()
   {
@@ -791,6 +790,8 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
     }
     $auth.login(credenciales).then(function(data){
 
+
+      localStorage.setItem('emailUser', credenciales.email);
       localStorage.setItem('user', JSON.stringify(data));
       $rootScope.userData = localStorage.getItem('user');
       console.log($rootScope.userData);
