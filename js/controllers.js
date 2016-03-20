@@ -793,9 +793,11 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
 
       var pushkey=  localStorage.getItem('pushKey');
       var device= ionic.Platform.platform();
-      var uuid=ionic.Platform.device();
-
-      $scope.addPush($scope.login.email, device, pushKey, uuid);
+      var uuid=ionic.Platform.device().uuid;
+      console.log(credenciales.email);
+      
+      push={emailUser:credenciales.email, platformDevice:device, pushKey:pushKey,deviceID:uuid};
+      console.log(push);
 
       localStorage.setItem('user', JSON.stringify(data));
       $rootScope.userData = localStorage.getItem('user');
