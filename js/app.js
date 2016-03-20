@@ -25,6 +25,7 @@ console.log("ondevicereadu");
 
 push.on('registration', function(data) {
     console.log(data.registrationId);
+    alert(data.registrationId);
 });
 
 push.on('notification', function(data) {
