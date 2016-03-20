@@ -70,6 +70,22 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
     }, 1000);
   };*/
   $scope.logout = function(){
+
+        var dId=ionic.Platform.device().uuid;
+        var eu= localStorage.getItem('emailUser');
+
+
+
+        $http.post('http://ancoradelserrallo.com/logoutApp', {email:eu,deviceId:dId}) 
+        .success(function(res){
+        console.log(res)
+        console.log("exito logout");
+        })
+        .error(function(err){
+        console.error(err)
+        console.log("error logout"+err);
+        });
+
     localStorage.clear();
     $rootScope.userData = false;
     $ionicHistory.nextViewOptions({
@@ -77,6 +93,8 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
     });
     $state.go('app.login');
   }
+
+
   $rootScope.url = 'http://ancoradelserrallo.com/'
   $rootScope.userData = localStorage.getItem('user') || false;
   if($rootScope.userData != false) $state.go("app.reservas");
@@ -786,8 +804,8 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
 
         pushState = {
         email:emailuser, 
-        pushK:device, 
-        device:pushKey,
+        pushK:pushKey, 
+        device:device,
         deviceId:uuid
         }
 
