@@ -10,7 +10,7 @@ angular.module('starter', ['ionic','ionic.service.core',  'starter.controllers',
   $ionicPlatform.ready(function() {
 
 
-console.log("ondevicereadu");
+alert("ondevicereadu");
     var push = PushNotification.init({
     android: {
         senderID: "332867885048"
