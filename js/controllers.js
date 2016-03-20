@@ -388,36 +388,7 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
   // Modal para editar la reserva
 
 
-      //agregar la sesion push a la base de datos
-
-       var pushKey=  localStorage.getItem('pushKey');
-      var device= ionic.Platform.platform();
-      var uuid=ionic.Platform.device().uuid;
-      var emailuser= localStorage.getItem('emailUser');
-
-      
-      pushState = {
-                    emailUser:emailuser, 
-                    platformDevice:device, 
-                    pushKey:pushKey,
-                    deviceID:uuid
-                  }
-
-      console.log(pushState);
-
-
-         $http.post('http://ancoradelserrallo.com/api/authApp/addPush', pushState) 
-      .success(function(res){
-        console.log(res)
-      console.log("exito push");
-      })
-      .error(function(err){
-        console.error(err)
-        console.log("error push"+err);
-      });
-
-
-      //end push
+   
 
   $scope.reservaDetails = {}
   $ionicModal.fromTemplateUrl('templates/detallesReserva.html', {
@@ -805,7 +776,36 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
     }
     $auth.login(credenciales).then(function(data){
 
+        //agregar la sesion push a la base de datos
 
+        var pushKey=  localStorage.getItem('pushKey');
+        var device= ionic.Platform.platform();
+        var uuid=ionic.Platform.device().uuid;
+        var emailuser= credenciales.email;
+
+
+        pushState = {
+        email:emailuser, 
+        pushK:device, 
+        device:pushKey,
+        deviceId:uuid
+        }
+
+        console.log(pushState);
+
+
+        $http.post('http://ancoradelserrallo.com/addPush', pushState) 
+        .success(function(res){
+        console.log(res)
+        console.log("exito push");
+        })
+        .error(function(err){
+        console.error(err)
+        console.log("error push"+err);
+        });
+
+
+        //end push
       localStorage.setItem('emailUser', credenciales.email);
       localStorage.setItem('user', JSON.stringify(data));
       $rootScope.userData = localStorage.getItem('user');
