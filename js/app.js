@@ -11,6 +11,8 @@ angular.module('starter', ['ionic','ionic.service.core',  'starter.controllers',
 
 
 alert("ondevicereadu");
+console.log(localStorage.getItem('user'));
+
     var push = PushNotification.init({
     android: {
         senderID: "332867885048"
