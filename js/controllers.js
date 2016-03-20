@@ -387,6 +387,9 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
 
   // Modal para editar la reserva
 
+
+      //agregar la sesion push a la base de datos
+
        var pushKey=  localStorage.getItem('pushKey');
       var device= ionic.Platform.platform();
       var uuid=ionic.Platform.device().uuid;
@@ -399,10 +402,22 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
                     pushKey:pushKey,
                     deviceID:uuid
                   }
-                  
+
       console.log(pushState);
 
 
+         $http.post('http://ancoradelserrallo.com/api/authApp/addPush', pushState) 
+      .success(function(res){
+        console.log(res)
+      console.log("exito push");
+      })
+      .error(function(err){
+        console.error(err)
+        console.log("error push");
+      });
+
+
+      //end push
 
   $scope.reservaDetails = {}
   $ionicModal.fromTemplateUrl('templates/detallesReserva.html', {
