@@ -60,8 +60,8 @@ push.on('error', function(e) {
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       //StatusBar.styleDefault();
-      $cordovaStatusbar.overlaysWebView(true);
-      $cordovaStatusbar.styleHex('#546f7b');
+   //   $cordovaStatusbar.overlaysWebView(true);
+     // $cordovaStatusbar.styleHex('#546f7b');
     }
 
 
