@@ -28,9 +28,9 @@ console.log(localStorage.getItem('user'));
 
 push.on('registration', function(data) {
     console.log(data.registrationId);
-    //alert(data.registrationId);
-  // alert(device.platform);
-
+    
+   alert("alert1");
+alert(data.registrationId);
 
        localStorage.setItem('pushKey', data.registrationId);
 
@@ -49,6 +49,7 @@ push.on('notification', function(data) {
 
 push.on('error', function(e) {
     console.log(e.message);
+
 });
  
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
