@@ -27,8 +27,10 @@
 <plugin name="phonegap-plugin-push" source="npm">
     <param name="SENDER_ID" value="332867885048" />
 </plugin>
+<gap:plugin name="cordova-plugin-file-transfer" version="" source="npm" />
 
 <gap:plugin name="cordova-plugin-device" version="" source="npm" />
+<gap:plugin name="cordova-plugin-dialogs" version="" source="npm" />
   <gap:plugin name="cordova-plugin-whitelist" version="1.0.0" source="npm" />
   <gap:plugin name="cordova-plugin-network-information" source="npm" version="1.0.1" />
     
