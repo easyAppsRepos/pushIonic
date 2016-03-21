@@ -28,7 +28,9 @@
     <param name="SENDER_ID" value="332867885048" />
 </plugin>
 <gap:plugin name="cordova-plugin-file-transfer" version="" source="npm" />
-
+<gap:plugin name="cordova-plugin-file" version="" source="npm" />
+<gap:plugin name="cordova-plugin-camera" version="" source="npm" />
+<gap:plugin name="cordova-plugin-statusbar" version="" source="npm" />
 <gap:plugin name="cordova-plugin-device" version="" source="npm" />
 <gap:plugin name="cordova-plugin-dialogs" version="" source="npm" />
   <gap:plugin name="cordova-plugin-whitelist" version="1.0.0" source="npm" />
