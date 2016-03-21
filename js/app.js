@@ -15,15 +15,15 @@ console.log(localStorage.getItem('user'));
 
 
     var push = PushNotification.init({
-    android: {
-        senderID: "332867885048"
+    "android": {
+        "senderID": "332867885048"
     },
-    ios: {
-        alert: "true",
-        badge: "true",
-        sound: "true"
+    "ios": {
+        "alert": "true",
+        "badge": "true",
+        "sound": "true"
     },
-    windows: {}
+    "windows": {}
 });
 
 push.on('registration', function(data) {
