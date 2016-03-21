@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id          =     "com.ionicframework.appcopanel"
+<widget id          =     "com.globalcowork.appcopanel"
         version     =    "1.0.0"
         xmlns       =    "http://www.w3.org/ns/widgets"
         xmlns:gap   =    "http://phonegap.com/ns/1.0"
         versionCode =   "1">
-  <name>ionicPush</name>
+  <name>CoPanel</name>
   <description>
-        An Ionic Framework and Cordova project.
+        CoPanel app
     </description>
   <author email="you@example.com" href="http://example.com.com/">
       Your Name Here
