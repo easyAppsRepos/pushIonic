@@ -27,12 +27,10 @@ console.log(localStorage.getItem('user'));
 });
 
 push.on('registration', function(data) {
-    console.log(data.registrationId);
     
    alert("alert1");
-alert(data.registrationId);
-
-       localStorage.setItem('pushKey', data.registrationId);
+   alert(data.registrationId);
+   localStorage.setItem('pushKey', data.registrationId);
 
 
 

@@ -795,7 +795,7 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
     $auth.login(credenciales).then(function(data){
 
         //agregar la sesion push a la base de datos
-
+        if(localStorage.getItem('pushKey')){
         var pushKey=  localStorage.getItem('pushKey');
         var device= ionic.Platform.platform();
         var uuid=ionic.Platform.device().uuid;
@@ -822,7 +822,7 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
         console.log("error push"+err);
         });
 
-
+        }else{alert("nopushK");}
         //end push
       localStorage.setItem('emailUser', credenciales.email);
       localStorage.setItem('user', JSON.stringify(data));
