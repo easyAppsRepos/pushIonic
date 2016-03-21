@@ -76,7 +76,7 @@ push.on('error', function(e) {
 
 
 
-  $authProvider.loginUrl = 'http://ancoradelserrallo.com/api/authApp'
+  $authProvider.loginUrl = 'http://ancoradelserrallo.com/api/authApp';
   $stateProvider
 
     .state('app', {
