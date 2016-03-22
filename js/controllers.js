@@ -374,7 +374,7 @@ $ionicHistory.clearHistory();
        // if (data.refresh)
       //  {
             console.log("reservaCt");
-            $scope.doRefresh();
+            $scope.getReservas();
        // }
     });
 
@@ -481,6 +481,35 @@ $ionicHistory.clearHistory();
       })
 	  
       $scope.cargando = true;
+
+          $http.get('http://ancoradelserrallo.com/api/authApp/getReservas')
+    .then(function(res){
+    $scope.reservasActivas = res.data.activas;
+        $scope.reservasAntiguas = res.data.antiguas
+        $scope.reservasEliminadas = res.data.eliminadas
+    for(var i=0; i<res.data.activas.length;i++){
+      $scope.onezoneDatepicker.highlights.push({date: (new Date(res.data.activas[i].fecha_reserva+"T12:00:00")),color: '#8FD4D9',textColor: '#fff',});
+    }
+    for(var i=0; i<res.data.antiguas.length;i++){
+      $scope.onezoneDatepicker.highlights.push({date: (new Date(res.data.antiguas[i].fecha_reserva+"T12:00:00")),color: '#CAD1DC',textColor: '#fff',});
+    }
+    $scope.noexiste($scope.fecha_m);
+    var indexedDates = [];
+
+
+      $ionicLoading.hide();
+      $scope.cargando = false;
+    },function(err){
+      $ionicLoading.show({
+        template: "Hubo un problema. <br> revisa tu conexion a internet",
+      })
+      $state.go('app.noConnection');
+      $timeout(function(){
+        $ionicLoading.hide();
+      },2000)
+    });
+  }
+
 	
 	$scope.obt_fecha_dia = function(i) {
 		var day_r= $scope.fecha.getDay();
@@ -630,45 +659,20 @@ $ionicHistory.clearHistory();
 	}
 	
 	
-    $http.get('http://ancoradelserrallo.com/api/authApp/getReservas')
-    .then(function(res){
-		$scope.reservasActivas = res.data.activas;
-        $scope.reservasAntiguas = res.data.antiguas
-        $scope.reservasEliminadas = res.data.eliminadas
-		for(var i=0; i<res.data.activas.length;i++){
-			$scope.onezoneDatepicker.highlights.push({date: (new Date(res.data.activas[i].fecha_reserva+"T12:00:00")),color: '#8FD4D9',textColor: '#fff',});
-		}
-		for(var i=0; i<res.data.antiguas.length;i++){
-			$scope.onezoneDatepicker.highlights.push({date: (new Date(res.data.antiguas[i].fecha_reserva+"T12:00:00")),color: '#CAD1DC',textColor: '#fff',});
-		}
-		$scope.noexiste($scope.fecha_m);
-		var indexedDates = [];
-    
-		$scope.datesToFilter = function() {
-			indexedreservasActivas = [];
-			return $scope.reservasActivas;
-		}
-    
-		$scope.filterDates = function(reserva) {
-			var dateIsNew = indexedreservasActivas.indexOf(reserva.fecha_reserva) == -1;
-			if (dateIsNew) {
-				indexedreservasActivas.push(reserva.fecha_reserva);
-			}
-			return dateIsNew;
-		}
 
-      $ionicLoading.hide();
-      $scope.cargando = false;
-    },function(err){
-      $ionicLoading.show({
-        template: "Hubo un problema. <br> revisa tu conexion a internet",
-      })
-      $state.go('app.noConnection');
-      $timeout(function(){
-        $ionicLoading.hide();
-      },2000)
-    });
-  };
+
+    $scope.datesToFilter = function() {
+      indexedreservasActivas = [];
+      return $scope.reservasActivas;
+    }
+    
+    $scope.filterDates = function(reserva) {
+      var dateIsNew = indexedreservasActivas.indexOf(reserva.fecha_reserva) == -1;
+      if (dateIsNew) {
+        indexedreservasActivas.push(reserva.fecha_reserva);
+      }
+      return dateIsNew;
+    }
 
   $scope.getReservas();
 
