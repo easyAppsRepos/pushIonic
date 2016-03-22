@@ -369,6 +369,16 @@ $ionicHistory.clearHistory();
 
 .controller('ReservasCtrl', function($scope,$ionicHistory, $rootScope,   $http, $ionicLoading, $ionicModal, $state, $timeout,$ionicSlideBoxDelegate, $ionicScrollDelegate){
 
+    $scope.$on('app:notification', function(event, data) {
+       // console.log(data);
+       // if (data.refresh)
+      //  {
+            console.log("reservaCt");
+            $scope.doRefresh();
+       // }
+    });
+
+
   $scope.tokenMy = localStorage.getItem('token');
    $scope.cont_dia= new Array(7);
   $scope.cont_dia[0]= 0;

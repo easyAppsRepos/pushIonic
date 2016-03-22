@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic','ionic.service.core',  'starter.controllers', 'satellizer', 'ngCordova'])
  
-.run(function($ionicPlatform , $ionicPopup, $cordovaStatusbar, $rootScope, $http, $cordovaNetwork, $state) {
+.run(function($ionicPlatform , $ionicPopup, $cordovaStatusbar, $rootScope, $http, $cordovaNetwork) {
   $ionicPlatform.ready(function() {
 
 
@@ -39,7 +39,8 @@ push.on('registration', function(data) {
 push.on('notification', function(data) {
 
   alert('Tienes una notificacion: '+data.title);
-  
+    $rootScope.openedFromNotification = true;
+    $rootScope.$broadcast('app:notification', {refresh: true});
     console.log(data.message);
     // data.title,
     // data.count,
