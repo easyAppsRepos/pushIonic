@@ -95,7 +95,7 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
     $ionicHistory.nextViewOptions({
       disableBack: true
     });
-   // $state.go('app.login');
+    $state.go('app.login');
   }
 
 
@@ -317,7 +317,7 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
 })
 
 .controller('ResCtrl', function($scope, $http, $ionicHistory, $ionicLoading) {
-
+$ionicHistory.clearHistory();
     $ionicLoading.show({
       template: 'Loading...'
     });
@@ -492,6 +492,7 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
 
 	
 	$scope.change_view = function(fecha, s) {
+
 		if(!s){
 			$scope.fecha_m=(new Date(fecha+"T12:00:00"));
 		}else{
@@ -527,6 +528,7 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
 		}
 	}
 	$scope.nextSlide = function() {
+  
 		if ($scope.fecha_m == new Date()){
 			$scope.tipo_d="Hoy";
 		}
@@ -536,6 +538,8 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
 	}
 	
 	$scope.movetoSlide = function(i) {
+//ret res
+ console.log("zzzz");
 		if(i==0){
 			$rootScope.back_button_show=false;
 		}
@@ -544,6 +548,8 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
 	
 	
 	$scope.slideHasChanged = function(index) {
+ 
+
 		if (index==0){
 			$rootScope.back_button_show=false;
 		}else{
@@ -556,8 +562,10 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
 		
 	}
 	$rootScope.volver = function() {
+
 		$rootScope.back_button_show=false;
 		$ionicSlideBoxDelegate.previous();
+
 	}
 	
 	$scope.fin=false;
