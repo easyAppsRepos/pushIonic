@@ -10,7 +10,7 @@ angular.module('starter', ['ionic','ionic.service.core',  'starter.controllers',
   $ionicPlatform.ready(function() {
 
 
-/*
+
 console.log(localStorage.getItem('user'));
 
 
@@ -49,7 +49,6 @@ push.on('error', function(e) {
     console.log(e.message);
 
 });
-*/
  
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)

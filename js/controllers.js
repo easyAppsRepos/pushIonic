@@ -78,7 +78,7 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
 
                   var dId=ionic.Platform.device().uuid;
         var eu= localStorage.getItem('emailUser');
-        
+
         $http.post('http://ancoradelserrallo.com/logoutApp', {email:eu,deviceId:dId}) 
         .success(function(res){
         console.log(res)
@@ -95,7 +95,7 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
     $ionicHistory.nextViewOptions({
       disableBack: true
     });
-    $state.go('app.login');
+   // $state.go('app.login');
   }
 
 
