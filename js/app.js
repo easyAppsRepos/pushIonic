@@ -10,7 +10,7 @@ angular.module('starter', ['ionic','ionic.service.core',  'starter.controllers',
   $ionicPlatform.ready(function() {
 
 
-alert("ondevicereadu");
+
 console.log(localStorage.getItem('user'));
 
 
@@ -28,8 +28,8 @@ console.log(localStorage.getItem('user'));
 
 push.on('registration', function(data) {
     
-   alert("alert1");
-   alert(data.registrationId);
+   //alert("alert1");
+   //alert(data.registrationId);
    localStorage.setItem('pushKey', data.registrationId);
 
 

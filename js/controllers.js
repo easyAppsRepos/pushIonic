@@ -71,11 +71,14 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
   };*/
   $scope.logout = function(){
 
-        var dId=ionic.Platform.device().uuid;
+
+
+
+         if(localStorage.getItem('pushKey')){
+
+                  var dId=ionic.Platform.device().uuid;
         var eu= localStorage.getItem('emailUser');
-
-
-
+        
         $http.post('http://ancoradelserrallo.com/logoutApp', {email:eu,deviceId:dId}) 
         .success(function(res){
         console.log(res)
@@ -85,6 +88,7 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
         console.error(err)
         console.log("error logout"+err);
         });
+        }
 
     localStorage.clear();
     $rootScope.userData = false;
@@ -822,7 +826,7 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
         console.log("error push"+err);
         });
 
-        }else{alert("nopushK");}
+        }else{console.log("nopushK");}
         //end push
       localStorage.setItem('emailUser', credenciales.email);
       localStorage.setItem('user', JSON.stringify(data));

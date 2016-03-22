@@ -9,7 +9,7 @@
         CoPanel app
     </description>
   <author email="you@example.com" href="http://example.com.com/">
-      Your Name Here
+      Global Cowork
     </author>
   <content src="index.html"/>
   <access origin="*"/>
@@ -21,6 +21,7 @@
   <preference name="BackupWebStorage" value="none"/>
   
     <preference name="SplashScreen" value="splash" />
+    <preference name="splash-screen-duration" value="15000"/> 
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
