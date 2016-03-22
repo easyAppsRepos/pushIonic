@@ -9,6 +9,46 @@ angular.module('starter', ['ionic','ionic.service.core',  'starter.controllers',
 .run(function($ionicPlatform , $ionicPopup, $cordovaStatusbar, $rootScope, $http, $cordovaNetwork) {
   $ionicPlatform.ready(function() {
 
+
+
+console.log(localStorage.getItem('user'));
+
+
+    var push = PushNotification.init({
+    "android": {
+        "senderID": "332867885048"
+    },
+    "ios": {
+        "alert": "true",
+        "badge": "true",
+        "sound": "true"
+    },
+    "windows": {}
+});
+
+push.on('registration', function(data) {
+    
+   //alert("alert1");
+   //alert(data.registrationId);
+   localStorage.setItem('pushKey', data.registrationId);
+
+
+
+});
+
+push.on('notification', function(data) {
+    console.log(data.message);
+    // data.title,
+    // data.count,
+    // data.sound,
+    // data.image,
+    console.log( data.additionalData);
+});
+
+push.on('error', function(e) {
+    console.log(e.message);
+
+});
  
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -36,7 +76,7 @@ angular.module('starter', ['ionic','ionic.service.core',  'starter.controllers',
 
 
 
-  $authProvider.loginUrl = 'http://ancoradelserrallo.com/api/authApp'
+  $authProvider.loginUrl = 'http://ancoradelserrallo.com/api/authApp';
   $stateProvider
 
     .state('app', {
