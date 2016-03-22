@@ -39,7 +39,7 @@ push.on('registration', function(data) {
 push.on('notification', function(data) {
 
   alert('Tienes una notificacion: '+data.title);
- 
+ console.log(data.additionalData.tickerText);
   if(data.additionalData.tickerText=='reserva'){
     $rootScope.openedFromNotification = true;
     $rootScope.$broadcast('app:notification', {refresh: true});
