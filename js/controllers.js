@@ -476,6 +476,7 @@ $ionicHistory.clearHistory();
   // Recupero las reservas
   $rootScope.tipoReservas = 'semana'
   $scope.getReservas = function(){
+    console.log("getReserv");
       $ionicLoading.show({
         template: 'Cargando...'
       })
