@@ -70,35 +70,13 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
     }, 1000);
   };*/
   $scope.logout = function(){
-
-
-
-
-         if(localStorage.getItem('pushKey')){
-
-                  var dId=ionic.Platform.device().uuid;
-        var eu= localStorage.getItem('emailUser');
-
-        $http.post('http://ancoradelserrallo.com/logoutApp', {email:eu,deviceId:dId}) 
-        .success(function(res){
-        console.log(res)
-        console.log("exito logout");
-        })
-        .error(function(err){
-        console.error(err)
-        console.log("error logout"+err);
-        });
-        }
-
-    localStorage.clear();
+    $window.localStorage.clear();
     $rootScope.userData = false;
     $ionicHistory.nextViewOptions({
       disableBack: true
     });
     $state.go('app.login');
   }
-
-
   $rootScope.url = 'http://ancoradelserrallo.com/'
   $rootScope.userData = localStorage.getItem('user') || false;
   if($rootScope.userData != false) $state.go("app.reservas");
@@ -317,7 +295,7 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
 })
 
 .controller('ResCtrl', function($scope, $http, $ionicHistory, $ionicLoading) {
-$ionicHistory.clearHistory();
+
     $ionicLoading.show({
       template: 'Loading...'
     });
@@ -409,9 +387,6 @@ $ionicHistory.clearHistory();
 
   // Modal para editar la reserva
 
-
-   
-
   $scope.reservaDetails = {}
   $ionicModal.fromTemplateUrl('templates/detallesReserva.html', {
     scope: $scope
@@ -492,7 +467,6 @@ $ionicHistory.clearHistory();
 
 	
 	$scope.change_view = function(fecha, s) {
-
 		if(!s){
 			$scope.fecha_m=(new Date(fecha+"T12:00:00"));
 		}else{
@@ -528,7 +502,6 @@ $ionicHistory.clearHistory();
 		}
 	}
 	$scope.nextSlide = function() {
-  
 		if ($scope.fecha_m == new Date()){
 			$scope.tipo_d="Hoy";
 		}
@@ -538,8 +511,6 @@ $ionicHistory.clearHistory();
 	}
 	
 	$scope.movetoSlide = function(i) {
-//ret res
- console.log("zzzz");
 		if(i==0){
 			$rootScope.back_button_show=false;
 		}
@@ -548,8 +519,6 @@ $ionicHistory.clearHistory();
 	
 	
 	$scope.slideHasChanged = function(index) {
- 
-
 		if (index==0){
 			$rootScope.back_button_show=false;
 		}else{
@@ -562,10 +531,8 @@ $ionicHistory.clearHistory();
 		
 	}
 	$rootScope.volver = function() {
-
 		$rootScope.back_button_show=false;
 		$ionicSlideBoxDelegate.previous();
-
 	}
 	
 	$scope.fin=false;
@@ -805,53 +772,19 @@ $ionicHistory.clearHistory();
       password: $scope.login.password
     }
     $auth.login(credenciales).then(function(data){
-
-        //agregar la sesion push a la base de datos
-        if(localStorage.getItem('pushKey')){
-        var pushKey=  localStorage.getItem('pushKey');
-        var device= ionic.Platform.platform();
-        var uuid=ionic.Platform.device().uuid;
-        var emailuser= credenciales.email;
-
-
-        pushState = {
-        email:emailuser, 
-        pushK:pushKey, 
-        device:device,
-        deviceId:uuid
-        }
-
-        console.log(pushState);
-
-
-        $http.post('http://ancoradelserrallo.com/addPush', pushState) 
-        .success(function(res){
-        console.log(res)
-        console.log("exito push");
-        })
-        .error(function(err){
-        console.error(err)
-        console.log("error push"+err);
-        });
-
-        }else{console.log("nopushK");}
-        //end push
-      localStorage.setItem('emailUser', credenciales.email);
       localStorage.setItem('user', JSON.stringify(data));
       $rootScope.userData = localStorage.getItem('user');
-      console.log($rootScope.userData);
+      console.log($rootScope.userData)
       $ionicLoading.hide();
       $ionicHistory.nextViewOptions({
         disableBack: true
-      });
-      $state.go('app.reservas');
+      })
+      $state.go('app.reservas')
     }, function(err){
-      alert('Hubo un error. Revise sus datos por favor.');
+      alert('Hubo un error. Revise sus datos por favor.')
 	  $state.go('app.reservas');
-      $ionicLoading.hide();
+      $ionicLoading.hide()
     })
-
-
   }
 })
 
