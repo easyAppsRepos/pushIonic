@@ -110,11 +110,23 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
 
 .controller('ComentariosCtrl', function($scope, $http, $ionicHistory, $rootScope, $ionicLoading) {
 
-    $ionicLoading.show({
-      template: 'Loading...'
+    $scope.$on('app:notificationC', function(event, data) {
+       // console.log(data);
+       // if (data.refresh)
+      //  {
+            console.log("comentarioPush");
+            $scope.getComentarios();
+       // }
     });
+
+
   // GET
   $scope.getComentarios = function(){
+      console.log("getComenario");
+        $ionicLoading.show({
+      template: 'Loading...'
+    });
+
     $http.get('http://ancoradelserrallo.com/api/authApp/getComentarios')
     .success(function(res){
       $scope.comentarios = res.comentarios;
