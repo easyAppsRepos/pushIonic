@@ -39,8 +39,7 @@ push.on('registration', function(data) {
 push.on('notification', function(data) {
 
   alert('Tienes una notificacion: '+data.title);
-  $state.go(app.reservas, {}, {reload: true});
-
+  
     console.log(data.message);
     // data.title,
     // data.count,
