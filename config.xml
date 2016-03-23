@@ -26,6 +26,9 @@
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
 
+<preference name="StatusBarOverlaysWebView" value="false" />
+<preference name="StatusBarStyle" value="lightcontent" />
+
 <preference name="android-build-tool" value="gradle" />
 <plugin name="phonegap-plugin-push" version="1.5.3" source="npm">
     <param name="SENDER_ID" value="332867885048" />
@@ -33,6 +36,7 @@
 <gap:plugin name="cordova-plugin-file-transfer" version="" source="npm" />
 <gap:plugin name="cordova-plugin-file" version="" source="npm" />
 <gap:plugin name="cordova-plugin-camera" version="" source="npm" />
+<gap:plugin name="cordova-plugin-statusbar" version="" source="npm" />
 
 <gap:plugin name="cordova-plugin-splashscreen" version="" source="npm" />
 <gap:plugin name="cordova-plugin-device" version="" source="npm" />
