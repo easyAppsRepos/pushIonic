@@ -27,7 +27,7 @@
   </feature>
 
 <preference name="android-build-tool" value="gradle" />
-<plugin name="phonegap-plugin-push" source="npm">
+<plugin name="phonegap-plugin-push" version="1.5.3" source="npm">
     <param name="SENDER_ID" value="332867885048" />
 </plugin>
 <gap:plugin name="cordova-plugin-file-transfer" version="" source="npm" />
