@@ -711,6 +711,7 @@ $ionicHistory.clearHistory();
     .success(function(res){
       console.log(res);
       $scope.getReservas();
+      $scope.contarTurno();
       $ionicLoading.hide();
     })
   }
