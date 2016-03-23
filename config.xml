@@ -19,7 +19,7 @@
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="android-minSdkVersion" value="16"/>
   <preference name="BackupWebStorage" value="none"/>
-  
+  <preference name="orientation" value="portrait" />
     <preference name="SplashScreen" value="splash" />
     <preference name="splash-screen-duration" value="15000"/> 
   <feature name="StatusBar">
