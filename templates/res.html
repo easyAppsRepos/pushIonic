@@ -434,6 +434,17 @@
 		<ul class="list">
 
 		  <li class="item item-toggle">
+		     Notificaciones
+		     <label class="toggle toggle-assertive">
+		       <input type="checkbox" ng-checked="res.notificacion == 1" ng-true-value="1" ng-false-value="0"  ng-model="res.notificacion">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		  </li>
+
+
+		  <li class="item item-toggle">
 		     Activar reservas
 		     <label class="toggle toggle-assertive">
 		       <input type="checkbox" ng-checked="res.co_section_reservas_activo == 1" ng-true-value="'1'" ng-false-value="'0'" ng-change="changeSettingValue('co_section_reservas_activo', res.co_section_reservas_activo)" ng-model="res.co_section_reservas_activo">

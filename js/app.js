@@ -21,7 +21,8 @@ console.log(localStorage.getItem('user'));
     "ios": {
         "alert": "true",
         "badge": "true",
-        "sound": "true"
+        "sound": "true",
+        "clearBadge":"true"
     },
     "windows": {}
 });

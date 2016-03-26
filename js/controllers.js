@@ -329,26 +329,33 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
 })
 
 .controller('ResCtrl', function($scope, $http, $ionicHistory, $ionicLoading) {
+
+
 $ionicHistory.clearHistory();
     $ionicLoading.show({
       template: 'Loading...'
     });
   $scope.tabRes = 'res'
   $scope.getRes = function() {
-    $http.get('http://ancoradelserrallo.com/api/authApp/getRes')
+    console.log(localStorage.getItem('emailUser'));
+    $http.get('http://ancoradelserrallo.com/api/authApp/getRes?email='+localStorage.getItem('emailUser'))
     .success(function(data){
+      console.log(data);
       $scope.res = data.restaurant
       $ionicLoading.hide()
     })
   }
  
   $scope.saveRes = function(){
+
+$scope.res.email=localStorage.getItem('emailUser');
     $ionicLoading.show({
       template: 'Un momento por favor...'
     })
     $http.post('http://ancoradelserrallo.com/api/authApp/saveRes',$scope.res)
     .success(function(res){
-      console.log(res)
+
+      console.log($scope.res)
       $ionicLoading.hide()
     })
   }
