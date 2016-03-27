@@ -3,31 +3,31 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
     return function (data, key) {
         if (!(data && key)) return;
         var result;
-		try{
-		try{
-			if(!this.$id){
-				result={};
-			}else{
-				var scopeId = this.$id;
-				if(!results[scopeId]){
-					results[scopeId]={};
-					this.$on("$destroy", function() {
-						delete results[scopeId];
-					});
-				}
-				result = results[scopeId];
-			}
-		}catch(err){
-			console.log("Hubo un error");
-		}
+    try{
+    try{
+      if(!this.$id){
+        result={};
+      }else{
+        var scopeId = this.$id;
+        if(!results[scopeId]){
+          results[scopeId]={};
+          this.$on("$destroy", function() {
+            delete results[scopeId];
+          });
+        }
+        result = results[scopeId];
+      }
+    }catch(err){
+      console.log("Hubo un error");
+    }
 
         for(var groupKey in result){
-			try{
-				result[groupKey].splice(0,result[groupKey].length);
-			}catch(err){
-				console.log("Hubo un error");
-			}
-		}
+      try{
+        result[groupKey].splice(0,result[groupKey].length);
+      }catch(err){
+        console.log("Hubo un error");
+      }
+    }
 
         for (var i=0; i<data.length; i++) {
             if (!result[data[i][key]])
@@ -37,16 +37,16 @@ angular.module('starter.controllers', ['onezone-datepicker']).filter('groupBy', 
 
         var keys = Object.keys(result);
         for(var k=0; k<keys.length; k++){
-			try{
-			  if(result[keys[k]].length===0)
-				delete result[keys[k]];
-			}catch(err){
-				console.log("Hubo un error");
-			}
+      try{
+        if(result[keys[k]].length===0)
+        delete result[keys[k]];
+      }catch(err){
+        console.log("Hubo un error");
+      }
         }
-		}catch(err){
-			console.log("Hubo un error");
-		}
+    }catch(err){
+      console.log("Hubo un error");
+    }
         return result;
     };
 }).controller('AppCtrl', function($scope,$rootScope, $ionicModal, $timeout, $state, $ionicHistory, $http, $cordovaNetwork) {
@@ -399,39 +399,6 @@ $scope.res.email=localStorage.getItem('emailUser');
 
 
   $scope.tokenMy = localStorage.getItem('token');
-   $scope.cont_dia= new Array(7);
-  $scope.cont_dia[0]= 0;
-  $scope.cont_dia[1]= 0;
-  $scope.cont_dia[2]= 0;
-  $scope.cont_dia[3]= 0;
-  $scope.cont_dia[4]= 0;
-  $scope.cont_dia[5]= 0;
-  $scope.cont_dia[6]= 0;
-  $scope.fecha= new Date();
-  $scope.fecha_m= new Date();
-  
-   $scope.onezoneDatepicker = {
-    date: $scope.fecha, // MANDATORY                     
-    mondayFirst: true,                
-    months: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Setiembre","Octubre","Noviembre","Diciembre"],                    
-    daysOfTheWeek: ["Do","Lu","Ma","Mi","Ju","Vi","Sa"],     
-    startDate: new Date(2012, 1, 26),             
-    endDate: new Date(2024, 1, 26),                    
-    disablePastDays: false,
-    disableSwipe: false,
-    disableWeekend: false,
-    showDatepicker: true,
-    showTodayButton: true,
-    calendarMode: false,
-    hideCancelButton: true,
-    hideSetButton: false,
-    highlights: [],
-    callback: function(value){
-		$scope.change_view(value,true);
-    }
-};
-  
-  
 
   if(!localStorage.getItem('user')) $state.go('app.reservas');
 
@@ -450,7 +417,7 @@ $scope.res.email=localStorage.getItem('emailUser');
 
   $scope.showDetallesReserva = function(id){
             console.log('aqui si')
-			$http.get('http://ancoradelserrallo.com/api/authApp/getReserva?id='+id)
+      $http.get('http://ancoradelserrallo.com/api/authApp/getReserva?id='+id)
             .then(function(res){
                   console.log('aqui tambien')
       console.log(res)
@@ -499,7 +466,44 @@ $scope.res.email=localStorage.getItem('emailUser');
       $ionicLoading.show({
         template: 'Cargando...'
       })
-	  
+
+
+         $scope.cont_dia= new Array(7);
+  $scope.cont_dia[0]= 0;
+  $scope.cont_dia[1]= 0;
+  $scope.cont_dia[2]= 0;
+  $scope.cont_dia[3]= 0;
+  $scope.cont_dia[4]= 0;
+  $scope.cont_dia[5]= 0;
+  $scope.cont_dia[6]= 0;
+  $scope.fecha= new Date();
+  $scope.fecha_m= new Date();
+  
+   $scope.onezoneDatepicker = {
+    date: $scope.fecha, // MANDATORY                     
+    mondayFirst: true,                
+    months: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Setiembre","Octubre","Noviembre","Diciembre"],                    
+    daysOfTheWeek: ["Do","Lu","Ma","Mi","Ju","Vi","Sa"],     
+    startDate: new Date(2012, 1, 26),             
+    endDate: new Date(2024, 1, 26),                    
+    disablePastDays: false,
+    disableSwipe: false,
+    disableWeekend: false,
+    showDatepicker: true,
+    showTodayButton: true,
+    calendarMode: false,
+    hideCancelButton: true,
+    hideSetButton: false,
+    highlights: [],
+    callback: function(value){
+    $scope.change_view(value,true);
+    }
+};
+  
+  
+
+
+    
       $scope.cargando = true;
 
           $http.get('http://ancoradelserrallo.com/api/authApp/getReservas')
@@ -530,155 +534,155 @@ $scope.res.email=localStorage.getItem('emailUser');
     });
   }
 
-	
-	$scope.obt_fecha_dia = function(i) {
-		var day_r= $scope.fecha.getDay();
-		var date= new Date();
-		date.setDate($scope.fecha.getDate()+(i-day_r));
-		$scope.fecha_m=date;
-	}
-	
-	$scope.noexiste = function(fecha) {
-		
-		$scope.nothing=true;
-		for(var i=0; i<$scope.onezoneDatepicker.highlights.length;i++){
-			if ($scope.onezoneDatepicker.highlights[i].date.toDateString() == fecha.toDateString()){
-				$scope.nothing=false;
-				return;
-			}
-		}	
-	}
-
-	
-	$scope.change_view = function(fecha, s) {
-
-		if(!s){
-			$scope.fecha_m=(new Date(fecha+"T12:00:00"));
-		}else{
-			$scope.fecha_m=fecha;
-		}
-		$scope.noexiste($scope.fecha_m);
-
-		$scope.nextSlide(); 
-		$scope.back_button_show=true
-	}
-	
-	$scope.Dia_icon= function(fecha,s){
-		if(!s){
-			var i = (new Date(fecha+"T12:00:00")).getDay();
-		}else{
-			var i = fecha.getDay();
-		}
-		
-		if (i==0){
-			return "img/Dias/Domingo.png"
-		}else if (i==1){
-			return "img/Dias/Lunes.png"
-		}else if (i==2){
-			return "img/Dias/Martes.png"
-		}else if (i==3){
-			return "img/Dias/Miercoles.png"
-		}else if (i==4){
-			return "img/Dias/Jueves.png"
-		}else if (i==5){
-			return "img/Dias/Viernes.png"
-		}else if (i==6){
-			return "img/Dias/Sabado.png"
-		}
-	}
-	$scope.nextSlide = function() {
   
-		if ($scope.fecha_m == new Date()){
-			$scope.tipo_d="Hoy";
-		}
-		$scope.noexiste($scope.fecha_m);
-		 $rootScope.back_button_show=true;
-		$ionicSlideBoxDelegate.next();
-	}
-	
-	$scope.movetoSlide = function(i) {
+  $scope.obt_fecha_dia = function(i) {
+    var day_r= $scope.fecha.getDay();
+    var date= new Date();
+    date.setDate($scope.fecha.getDate()+(i-day_r));
+    $scope.fecha_m=date;
+  }
+  
+  $scope.noexiste = function(fecha) {
+    
+    $scope.nothing=true;
+    for(var i=0; i<$scope.onezoneDatepicker.highlights.length;i++){
+      if ($scope.onezoneDatepicker.highlights[i].date.toDateString() == fecha.toDateString()){
+        $scope.nothing=false;
+        return;
+      }
+    } 
+  }
+
+  
+  $scope.change_view = function(fecha, s) {
+
+    if(!s){
+      $scope.fecha_m=(new Date(fecha+"T12:00:00"));
+    }else{
+      $scope.fecha_m=fecha;
+    }
+    $scope.noexiste($scope.fecha_m);
+
+    $scope.nextSlide(); 
+    $scope.back_button_show=true
+  }
+  
+  $scope.Dia_icon= function(fecha,s){
+    if(!s){
+      var i = (new Date(fecha+"T12:00:00")).getDay();
+    }else{
+      var i = fecha.getDay();
+    }
+    
+    if (i==0){
+      return "img/Dias/Domingo.png"
+    }else if (i==1){
+      return "img/Dias/Lunes.png"
+    }else if (i==2){
+      return "img/Dias/Martes.png"
+    }else if (i==3){
+      return "img/Dias/Miercoles.png"
+    }else if (i==4){
+      return "img/Dias/Jueves.png"
+    }else if (i==5){
+      return "img/Dias/Viernes.png"
+    }else if (i==6){
+      return "img/Dias/Sabado.png"
+    }
+  }
+  $scope.nextSlide = function() {
+  
+    if ($scope.fecha_m == new Date()){
+      $scope.tipo_d="Hoy";
+    }
+    $scope.noexiste($scope.fecha_m);
+     $rootScope.back_button_show=true;
+    $ionicSlideBoxDelegate.next();
+  }
+  
+  $scope.movetoSlide = function(i) {
 //ret res
  console.log("zzzz");
-		if(i==0){
-			$rootScope.back_button_show=false;
-		}
-		$ionicSlideBoxDelegate.slide(i);
-	}
-	
-	
-	$scope.slideHasChanged = function(index) {
+    if(i==0){
+      $rootScope.back_button_show=false;
+    }
+    $ionicSlideBoxDelegate.slide(i);
+  }
+  
+  
+  $scope.slideHasChanged = function(index) {
  
 
-		if (index==0){
-			$rootScope.back_button_show=false;
-		}else{
-			$rootScope.back_button_show=true;
-		}
-		if(index==1){
-			$scope.noexiste($scope.fecha_m);
-		}
-		$ionicScrollDelegate.scrollTop();
-		
-	}
-	$rootScope.volver = function() {
+    if (index==0){
+      $rootScope.back_button_show=false;
+    }else{
+      $rootScope.back_button_show=true;
+    }
+    if(index==1){
+      $scope.noexiste($scope.fecha_m);
+    }
+    $ionicScrollDelegate.scrollTop();
+    
+  }
+  $rootScope.volver = function() {
 
-		$rootScope.back_button_show=false;
-		$ionicSlideBoxDelegate.previous();
+    $rootScope.back_button_show=false;
+    $ionicSlideBoxDelegate.previous();
 
-	}
-	
-	$scope.fin=false;
+  }
+  
+  $scope.fin=false;
     $http.get('http://ancoradelserrallo.com/api/authApp/getRes')
     .then(function(data){
       $scope.res = data.restaurant;
-	  data=data.data;
-	  $scope.turnos=[
-			{dia:"domingo", am_op:data.restaurant.res_lunes_abre_am, am_cerr:data.restaurant.res_lunes_cierra_am,pm_op:data.restaurant.res_lunes_abre_pm, pm_cerr:data.restaurant.res_lunes_cierra_pm},
-			{dia:"lunes",  am_op:data.restaurant.res_lunes_abre_am, am_cerr:data.restaurant.res_lunes_cierra_am,pm_op:data.restaurant.res_lunes_abre_pm, pm_cerr:data.restaurant.res_lunes_cierra_pm},
-			{dia:"martes", am_op:data.restaurant.res_lunes_abre_am, am_cerr: data.restaurant.res_lunes_cierra_am,pm_op:data.restaurant.res_lunes_abre_pm, pm_cerr:data.restaurant.res_lunes_cierra_pm},
-			{dia:"miercoles", am_op:data.restaurant.res_lunes_abre_am, am_cerr:data.restaurant.res_lunes_cierra_am,pm_op:data.restaurant.res_lunes_abre_pm, pm_cerr:data.restaurant.res_lunes_cierra_pm},
-			{dia:"jueves", am_op:data.restaurant.res_lunes_abre_am, am_cerr: data.restaurant.res_lunes_cierra_am,pm_op:data.restaurant.res_lunes_abre_pm, pm_cerr:data.restaurant.res_lunes_cierra_pm},
-			{dia:"viernes", am_op:data.restaurant.res_lunes_abre_am, am_cerr:data.restaurant.res_lunes_cierra_am,pm_op:data.restaurant.res_lunes_abre_pm, pm_cerr:data.restaurant.res_lunes_cierra_pm},
-			{dia:"sabado", am_op:data.restaurant.res_lunes_abre_am, am_cerr:data.restaurant.res_lunes_cierra_am,pm_op:data.restaurant.res_lunes_abre_pm, pm_cerr:data.restaurant.res_lunes_cierra_pm}
-			 ];
+    data=data.data;
+    $scope.turnos=[
+      {dia:"domingo", am_op:data.restaurant.res_lunes_abre_am, am_cerr:data.restaurant.res_lunes_cierra_am,pm_op:data.restaurant.res_lunes_abre_pm, pm_cerr:data.restaurant.res_lunes_cierra_pm},
+      {dia:"lunes",  am_op:data.restaurant.res_lunes_abre_am, am_cerr:data.restaurant.res_lunes_cierra_am,pm_op:data.restaurant.res_lunes_abre_pm, pm_cerr:data.restaurant.res_lunes_cierra_pm},
+      {dia:"martes", am_op:data.restaurant.res_lunes_abre_am, am_cerr: data.restaurant.res_lunes_cierra_am,pm_op:data.restaurant.res_lunes_abre_pm, pm_cerr:data.restaurant.res_lunes_cierra_pm},
+      {dia:"miercoles", am_op:data.restaurant.res_lunes_abre_am, am_cerr:data.restaurant.res_lunes_cierra_am,pm_op:data.restaurant.res_lunes_abre_pm, pm_cerr:data.restaurant.res_lunes_cierra_pm},
+      {dia:"jueves", am_op:data.restaurant.res_lunes_abre_am, am_cerr: data.restaurant.res_lunes_cierra_am,pm_op:data.restaurant.res_lunes_abre_pm, pm_cerr:data.restaurant.res_lunes_cierra_pm},
+      {dia:"viernes", am_op:data.restaurant.res_lunes_abre_am, am_cerr:data.restaurant.res_lunes_cierra_am,pm_op:data.restaurant.res_lunes_abre_pm, pm_cerr:data.restaurant.res_lunes_cierra_pm},
+      {dia:"sabado", am_op:data.restaurant.res_lunes_abre_am, am_cerr:data.restaurant.res_lunes_cierra_am,pm_op:data.restaurant.res_lunes_abre_pm, pm_cerr:data.restaurant.res_lunes_cierra_pm}
+       ];
       $ionicLoading.hide();
-	  $scope.fin=true;
+    $scope.fin=true;
     });
-	
-	$scope.contarTurno = function(day,reservas){
-		if( $scope.fin==false){
-			return;
-		}
-		var i=0;
-		var am=0;
-		var pm=0;
-		if(day =="Lunes" || day =="Monday"){ i=1;}else if(day =="Martes" || day =="Tuesday"){ i=2;}else if(day =="Miercoles" || day =="Wednesday"){ i=3;}else if(day =="Jueves" || day =="Thursday"){ i=4;}else if(day =="Viernes" || day =="Friday"){ i=5;}else if(day =="Sabado" || day =="Saturday"){ i=6;}else if(day =="Domingo" || day =="Sunday"){ i=0;}
-		var hora_am_op= new Date("2016-01-01T"+ $scope.turnos[i].am_op);
-		var hora_am_cerr= new Date("2016-01-01T"+ $scope.turnos[i].am_cerr);
-		var hora_pm_op= new Date("2016-01-01T"+ $scope.turnos[i].pm_op);
-		var hora_pm_cerr= new Date("2016-01-01T"+ $scope.turnos[i].pm_crr);	
-		for( j=0; j< reservas.length; j++){
-			var hora= new Date("2016-01-01T"+reservas[j].hora_reserva);
-			if (hora_am_op <= hora &&  hora <= hora_am_cerr){
-				am++;
-			}else{
-				pm++;
-			}
-		}		
-		var day_r= $scope.fecha.getDay();
-		var fecha=new Date(reservas[0].fecha_reserva+"T12:00:00");
-		var date= new Date();
-		date.setDate($scope.fecha.getDate()+(i-day_r));
-		if(i==0){
-			date.setDate($scope.fecha.getDate()+(7-day_r));
-		}
-		if(date.toDateString() == fecha.toDateString()){
-			$scope.cont_dia[i]= am+pm;
-		}
-		return [am, pm];
-	}
-	
-	
+  
+  $scope.contarTurno = function(day,reservas){
+    if( $scope.fin==false){
+      return;
+    }
+    var i=0;
+    var am=0;
+    var pm=0;
+    if(day =="Lunes" || day =="Monday"){ i=1;}else if(day =="Martes" || day =="Tuesday"){ i=2;}else if(day =="Miercoles" || day =="Wednesday"){ i=3;}else if(day =="Jueves" || day =="Thursday"){ i=4;}else if(day =="Viernes" || day =="Friday"){ i=5;}else if(day =="Sabado" || day =="Saturday"){ i=6;}else if(day =="Domingo" || day =="Sunday"){ i=0;}
+    var hora_am_op= new Date("2016-01-01T"+ $scope.turnos[i].am_op);
+    var hora_am_cerr= new Date("2016-01-01T"+ $scope.turnos[i].am_cerr);
+    var hora_pm_op= new Date("2016-01-01T"+ $scope.turnos[i].pm_op);
+    var hora_pm_cerr= new Date("2016-01-01T"+ $scope.turnos[i].pm_crr); 
+    for( j=0; j< reservas.length; j++){
+      var hora= new Date("2016-01-01T"+reservas[j].hora_reserva);
+      if (hora_am_op <= hora &&  hora <= hora_am_cerr){
+        am++;
+      }else{
+        pm++;
+      }
+    }   
+    var day_r= $scope.fecha.getDay();
+    var fecha=new Date(reservas[0].fecha_reserva+"T12:00:00");
+    var date= new Date();
+    date.setDate($scope.fecha.getDate()+(i-day_r));
+    if(i==0){
+      date.setDate($scope.fecha.getDate()+(7-day_r));
+    }
+    if(date.toDateString() == fecha.toDateString()){
+      $scope.cont_dia[i]= am+pm;
+    }
+    return [am, pm];
+  }
+  
+  
 
 
     $scope.datesToFilter = function() {
@@ -882,7 +886,7 @@ $scope.res.email=localStorage.getItem('emailUser');
       $state.go('app.reservas');
     }, function(err){
       alert('Hubo un error. Revise sus datos por favor.');
-	  $state.go('app.reservas');
+    $state.go('app.reservas');
       $ionicLoading.hide();
     })
 
